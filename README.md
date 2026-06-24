@@ -18,7 +18,6 @@ mbeddは[dfruntime](https://github.com/denizzzka/dfruntime)の影響を受け、
 ## 実装指針
 詳しくは、[coding_rules](docs/dev_note/coding_rules.md)を参照のこと。
 ## 利用許諾
-特に断りのない限り、次の通りとする。
 #### source code
 詳しくは、source codeを直接参照すべきである。
 1. 原則としてGNU GPL 3.0以降でその利用を許諾する。
