@@ -17,5 +17,5 @@
 */
 module boost.math.ccmath;
 
-public import mbedd.stdcpp.cmath;
-public import mbedd.stdcpp.cstdlib;
+public import stdcpp.cmath;
+public import stdcpp.cstdlib;
