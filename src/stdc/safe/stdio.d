@@ -21,17 +21,9 @@ License:   $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+). Original is $
 Authors:   Denkousi
 Source: 
 */
-module mbedd.stdc.safe.stdlib;
+module stdc.safe.stdio;
 
 @nogc:
 @safe:
-@live:
 nothrow:
 extern(C):
-
-/**
-malloc safe varsion. The type must be specified when instantiated.
-*/
-T* malloc_s(T)(size_t n);
-///
-void free(T)(T* ptr);

@@ -1,5 +1,5 @@
 /*
-    mbedd - 組み込みシステム向けのD言語標準ライブラリとDruntime
+    libmbedD - 組み込みシステム向けのD言語標準ライブラリとDruntime
     Copyright (C) 2025 - Denkousi
 
     This program is free software: you can redistribute it and/or modify
@@ -21,33 +21,30 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
+module src.stdc;
 
-module src.mbedd.stdc.libgen;
-
-extern(C):
-@nogc:
-@live:
-nothrow:
-__gshared:
-
-version(Posix){} else
-    pragma(msg, "Warning:  The current environment does not support Posix, which causes a link error. "~
-                            "You need to build libc separately and link again.");
-
-private
-{
-    version(CRuntime_Glibc)
-    {
-        enum symblname_dirname = "__xpg_basename";
-    }
-    else
-    {
-        enum symblname_dirname  = "dirname";
-    }
-}
-
-///
-inout(char)* basename(scope inout(char)* path) pure;
-///
-pragma(mangle, symblname_dirname)
-inout(char)* dirname(scope inout(char)* path) pure;
+public import stdc.assert_;
+public import stdc.augarith;
+public import stdc.ctype;
+public import stdc.complex;
+public import stdc.fenv;
+public import stdc.float_;
+public import stdc.inttypes;
+public import stdc.locale;
+public import stdc.math;
+public import stdc.signal;
+public import stdc.stdarg;
+public import stdc.stdatomic;
+public import stdc.stdbit;
+public import stdc.stddef;
+public import stdc.stdckdint;
+public import stdc.stdint;
+public import stdc.stdio;
+public import stdc.stdlib;
+public import stdc.stdmchar;
+public import stdc.string;
+public import stdc.tgmath;
+public import stdc.time;
+public import stdc.uchar;
+public import stdc.wchar_;
+public import stdc.wctype;

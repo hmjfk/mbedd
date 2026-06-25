@@ -29,52 +29,64 @@ Standards: IEEE Std 1003.1™-2024(POSIX.1-2024)
 
 POSIX規格では、定数値を八進数で表記すると規定されている。しかし、D2.112.0時点では八進接頭辞が存在しないため、この説明においてはC2y規格で採用された記法を用いている。
 +/
-module mbedd.stdc.cpio;
-
-// なお、source中では十六進数で表記している。
-enum
-{
-    /// 0o000400
-    C_IRUSR = 0x100,
-    /// 0o000200
-    C_IWUSR = 0x80,
-    /// 0o000100
-    C_IXUSR = 0x40,
-    /// 0o000040
-    C_IRGRP = 0x20,
-    /// 0o000020
-    C_IWGRP = 0x10,
-    /// 0o000010
-    C_IXGRP = 0x8,
-    /// 0o000004
-    C_IROTH = 0x4,
-    /// 0o000002
-    C_IWOTH = 0x2,
-    /// 0o000001
-    C_IXOTH = 0x1,
-    /// 0o004000
-    C_ISUID = 0x800,
-    /// 0o002000
-    C_ISGID = 0x400,
-    /// 0o001000
-    C_ISVTX = 0x200,
-    /// 0o040000
-    C_ISDIR = 0x4000,
-    /// 0o010000
-    C_ISFIFO = 0x1000,
-    /// 0o100000
-    C_ISREG = 0x8000,
-    /// 0o060000
-    C_ISBLK = 0x6000,
-    /// 0o020000
-    C_ISCHR = 0x2000,
-    /// 0o110000
-    C_ISCTG = 0x9000,
-    /// 0o120000
-    C_ISLNK = 0xA000,
-    /// 0o140000
-    C_ISSOCK = 0xC000,
-}
+//  なお、source中では十六進数で表記している。
+module src.stdc.tar;
 
 ///
-enum MAGIC = "070707";
+enum TMAGIC = "ustar";
+///
+enum TMAGLEN = 6;
+///
+enum TVERSION = "00";
+///
+enum TVERSLEN = 2;
+
+enum
+{
+    ///
+    REGTYPE = '0',
+    ///
+    AREGTYPE = '\0',
+    ///
+    LNKTYPE = '1',
+    ///
+    SYMTYPE = '2',
+    ///
+    CHRTYPE = '3',
+    ///
+    BLKTYPE = '4',
+    ///
+    DIRTYPE = '5',
+    ///
+    FIFOTYPE = '6',
+    ///
+    CONTTYPE = '7',
+}
+
+enum
+{
+    /// 0o4000
+    TSUID = 0x800,
+    /// 0o2000
+    TSGID = 0x400,
+    /// XSI Extension 0o1000
+    TSVTX = 0x200,
+    /// 0o400
+    TUREAD = 0x100,
+    /// 0o200
+    TUWRITE = 0x80,
+    /// 0o100
+    TUEXEC = 0x40,
+    /// 0o0040
+    TGREAD = 0x20,
+    /// 0o0020
+    TGWRITE = 0x10,
+    /// 0o0010
+    TGEXEC = 0x8,
+    /// 0o0004
+    TOREAD = 0x4,
+    /// 0o0002
+    TOWRITE = 0x2,
+    /// 0o0001
+    TOEXEC = 0x1,
+}

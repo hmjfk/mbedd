@@ -30,7 +30,7 @@ Standards: ISO/IEC TS 18661-4:2025
 In D, not supported _Float*N* and _Decimal*N* types.
 Of course _Float*N*/_Decimal*N* version function not implementation. 
 +/
-module src.mbedd.stdc.augarith;
+module stdc.augarith;
 
 extern (C):
 nothrow:

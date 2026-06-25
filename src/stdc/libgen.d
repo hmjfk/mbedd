@@ -21,59 +21,33 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
-module src.mbedd.stdcpp.bit;
 
-@nogc
-extern (C++, "std")
+module src.stdc.libgen;
+
+extern(C):
+@nogc:
+@live:
+nothrow:
+__gshared:
+
+version(Posix){} else
+    pragma(msg, "Warning:  The current environment does not support Posix, which causes a link error. "~
+                            "You need to build libc separately and link again.");
+
+private
 {
-    /// bit_cast
-    To bit_cast(To, From)(const ref From from) nothrow; // The C++ side uses a `requires` clause.
-    
-    /// byteswap
-    T byteswap(T)(T n) nothrow;
-    
-    /// integral powers of 2
-    bool has_single_bit(T)(T x) nothrow;
-    ///
-    T bit_ceil(T)(T x);
-    ///
-    T bit_floor(T)(T x) nothrow;
-    ///
-    int bit_width(T)(T x) nothrow;
-
-    /// rotating
-    T rotl(T)(T x, int s) nothrow;
-    ///
-    T rotr(T)(T x, int s) nothrow;
-    
-    /// counting
-    int countl_zero(T)(T x) nothrow;
-    ///
-    int countl_one(T)(T x) nothrow;
-    ///
-    int countr_zero(T)(T x) nothrow;
-    ///
-    int countr_one(T)(T x) nothrow;
-    ///
-    int popcount(T)(T x) nothrow;
-
-    /// endian
-    version (LittleEndian)
+    version(CRuntime_Glibc)
     {
-        enum endian
-        {
-            little,
-            big,
-            native = little,
-        }
+        enum symblname_dirname = "__xpg_basename";
     }
-    else version (BigEndian)
+    else
     {
-        enum endian
-        {
-            little,
-            big,
-            native = big,
-        }
+        enum symblname_dirname  = "dirname";
     }
 }
+
+///
+inout(char)* basename(scope inout(char)* path) pure;
+///
+pragma(mangle, symblname_dirname)
+inout(char)* dirname(scope inout(char)* path) pure;

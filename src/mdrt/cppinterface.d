@@ -24,7 +24,7 @@
 module mdrt.cppinterface;
 
 public import mdrt.coredefs;
-import mbedd.stdc.stddef;
+import stdc.stddef;
 
 @nogc:
 nothrow:

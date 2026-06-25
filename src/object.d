@@ -21,7 +21,7 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
-module src.object;
+module object;
 /**
 このheaderは、互換性のためだけに残されており、ほとんど何も定義されない。
 version WithDruntimeを定義した場合、druntime/Phobosを編纂するために最低限必要な型の別名が宣言される。
@@ -30,5 +30,5 @@ version WithDruntimeを定義した場合、druntime/Phobosを編纂するため
 version(WithDruntime)
 {
     public import mdrt.coredefs;
-    public import mbedd.stdc.stddef;
+    public import stdc.stddef;
 }

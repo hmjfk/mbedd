@@ -22,14 +22,14 @@
     <http://www.gnu.org/licenses/>.
 */
 
-module mbedd.stdc.endian;
+module stdc.endian;
 
 version(Posix){} else
     pragma(msg, "Warning: The current environment does not support Posix, which causes a link error. "~
                           "You need to build Gnulib separately and link again.");
 
-public import mbedd.stdc.stdint;
-import mbedd.stdc.stdbit: __STDC_ENDIAN_LITTLE__, __STDC_ENDIAN_NATIVE__;
+public import stdc.stdint;
+import stdc.stdbit: __STDC_ENDIAN_LITTLE__, __STDC_ENDIAN_NATIVE__;
 
 ///
 enum LITTLE_ENDIAN = 1234;

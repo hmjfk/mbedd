@@ -21,8 +21,8 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
-module mbedd.stdcpp.numbers.numbers;
-import mbedd.stdcpp.concepts: floating_point;
+module stdcpp.numbers.numbers;
+import stdcpp.concepts: floating_point;
 
 // 桁数は34桁(C言語の_Float128型を想定)
 ///

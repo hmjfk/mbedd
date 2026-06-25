@@ -22,5 +22,5 @@
     <http://www.gnu.org/licenses/>.
 */
 /// C言語標準部品集の一括取込header。Research Unixv10, Plan9拡張
-module src.libc;
-public import mbedd.stdc;
+module libc;
+public import stdc;

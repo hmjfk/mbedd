@@ -1,5 +1,5 @@
 /*
-    libmbedD - 組み込みシステム向けのD言語標準ライブラリとDruntime
+    mbedd - 組み込みシステム向けのD言語標準ライブラリとDruntime
     Copyright (C) 2025 - Denkousi
 
     This program is free software: you can redistribute it and/or modify
@@ -21,30 +21,8 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
-module src.mbedd.stdc;
+module stdcpp.numbers;
+public static import stdcpp.numbers.numbers;
 
-public import mbedd.stdc.assert_;
-public import mbedd.stdc.augarith;
-public import mbedd.stdc.ctype;
-public import mbedd.stdc.complex;
-public import mbedd.stdc.fenv;
-public import mbedd.stdc.float_;
-public import mbedd.stdc.inttypes;
-public import mbedd.stdc.locale;
-public import mbedd.stdc.math;
-public import mbedd.stdc.signal;
-public import mbedd.stdc.stdarg;
-public import mbedd.stdc.stdatomic;
-public import mbedd.stdc.stdbit;
-public import mbedd.stdc.stddef;
-public import mbedd.stdc.stdckdint;
-public import mbedd.stdc.stdint;
-public import mbedd.stdc.stdio;
-public import mbedd.stdc.stdlib;
-public import mbedd.stdc.stdmchar;
-public import mbedd.stdc.string;
-public import mbedd.stdc.tgmath;
-public import mbedd.stdc.time;
-public import mbedd.stdc.uchar;
-public import mbedd.stdc.wchar_;
-public import mbedd.stdc.wctype;
+/// namespace
+alias numbers = stdcpp.numbers.numbers.numbers;

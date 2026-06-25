@@ -24,11 +24,11 @@ Source: https://dlang.org/spec/function.html#safe-interfaces
 ここで実装されるmem系関数は、C標準とは異なり配列の要素型や文字cをubyte(unsigned char)へ変換しない。必要な場合は、利用者の責任で明示的に型変換すること。
 */
 
-module mbedd.stdc.safe.string;
+module stdc.safe.string;
 
 version(withDruntime){} else
 {
-    import mbedd.stdc.stddef: size_t;
+    import stdc.stddef: size_t;
     import mdrt.coredefs;
 }
 @nogc:

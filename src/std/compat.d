@@ -26,25 +26,25 @@
 // C++ portabilty module
 module src.std.compat;
 
-public import mbedd.stdcpp;
+public import stdcpp;
 
-public import mbedd.stdc.assert_;
-public import mbedd.stdc.ctype;
-public import mbedd.stdc.errno;
-public import mbedd.stdc.fenv;
-public import mbedd.stdc.float_;
-public import mbedd.stdc.inttypes;
-public import mbedd.stdc.limits;
-public import mbedd.stdc.locale;
-public import mbedd.stdc.math;
-public import mbedd.stdc.signal;
-public import mbedd.stdc.stdarg;
-public import mbedd.stdc.stddef;
-public import mbedd.stdc.stdint;
-public import mbedd.stdc.stdio;
-public import mbedd.stdc.stdlib;
-public import mbedd.stdc.string;
-public import mbedd.stdc.time;
-public import mbedd.stdc.uchar;
-public import mbedd.stdc.wchar_;
-public import mbedd.stdc.wctype;
+public import stdc.assert_;
+public import stdc.ctype;
+public import stdc.errno;
+public import stdc.fenv;
+public import stdc.float_;
+public import stdc.inttypes;
+public import stdc.limits;
+public import stdc.locale;
+public import stdc.math;
+public import stdc.signal;
+public import stdc.stdarg;
+public import stdc.stddef;
+public import stdc.stdint;
+public import stdc.stdio;
+public import stdc.stdlib;
+public import stdc.string;
+public import stdc.time;
+public import stdc.uchar;
+public import stdc.wchar_;
+public import stdc.wctype;

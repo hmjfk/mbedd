@@ -25,4 +25,4 @@
 /// C++ portabilty module
 module std;
 
-public import mbedd.stdcpp;
+public import stdcpp;

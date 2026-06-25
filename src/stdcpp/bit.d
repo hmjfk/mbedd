@@ -21,8 +21,59 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
-module mbedd.stdcpp.numbers;
-public static import mbedd.stdcpp.numbers.numbers;
+module stdcpp.bit;
 
-/// namespace
-alias numbers = mbedd.stdcpp.numbers.numbers.numbers;
+@nogc
+extern (C++, "std")
+{
+    /// bit_cast
+    To bit_cast(To, From)(const ref From from) nothrow; // The C++ side uses a `requires` clause.
+    
+    /// byteswap
+    T byteswap(T)(T n) nothrow;
+    
+    /// integral powers of 2
+    bool has_single_bit(T)(T x) nothrow;
+    ///
+    T bit_ceil(T)(T x);
+    ///
+    T bit_floor(T)(T x) nothrow;
+    ///
+    int bit_width(T)(T x) nothrow;
+
+    /// rotating
+    T rotl(T)(T x, int s) nothrow;
+    ///
+    T rotr(T)(T x, int s) nothrow;
+    
+    /// counting
+    int countl_zero(T)(T x) nothrow;
+    ///
+    int countl_one(T)(T x) nothrow;
+    ///
+    int countr_zero(T)(T x) nothrow;
+    ///
+    int countr_one(T)(T x) nothrow;
+    ///
+    int popcount(T)(T x) nothrow;
+
+    /// endian
+    version (LittleEndian)
+    {
+        enum endian
+        {
+            little,
+            big,
+            native = little,
+        }
+    }
+    else version (BigEndian)
+    {
+        enum endian
+        {
+            little,
+            big,
+            native = big,
+        }
+    }
+}
