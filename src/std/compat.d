@@ -24,7 +24,7 @@
 
 
 // C++ portabilty module
-module src.std.compat;
+module std.compat;
 
 public import stdcpp;
 
