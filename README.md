@@ -20,10 +20,10 @@ mbeddは[dfruntime](https://github.com/denizzzka/dfruntime)の影響を受け、
 ## 利用許諾
 #### source code
 詳しくは、source codeを直接参照すべきである。
-1. 原則としてGNU GPL 3.0以降でその利用を許諾する。
-2. mbeddは、libstdc++を改変しているため、GCC RLE v3.0以降が適用される。  
+1. 原則としてGNU GPL 3.0以降でその利用を許諾する。これにより、全体としてはGNU GPL 3.0以降が適用される。
+2. stdcpp moduleは、libstdc++を改変しているため、GCC RLE v3.0以降が適用される。
 3. 一部は、Boost Softwere Licenceで許諾される。
-4. mbeddなど、一部の部品集は宣言のみで実装が含まれていない場合がある。そのような部分は、著作権法上の著作物にあたらないと解釈されていることをここに通知する。
+4. 前方宣言のみで実装が含まれていない部分は、著作権法上の著作物にあたらないと解釈されていることをここに通知する。
 #### 文書
 CC BY-SA 4.0以降(LICENCE.DOCSを参照)で利用を許諾する。
 GPLに対する例外として、source中のDdocは、CC BY-SA 4.0以降によっても利用することができる。
