@@ -23,6 +23,7 @@
 */
 module src.stdc;
 
+version(none):
 public import stdc.assert_;
 public import stdc.augarith;
 public import stdc.ctype;
