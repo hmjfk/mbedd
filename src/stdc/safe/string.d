@@ -89,8 +89,22 @@ unittest
 version(none)
 {
 ///
-ref T[N1] memmove(T, size_t N1, size_t N2)(ref T[N1] s1, ref const T[N2] s2, size_t n) pure @safe;
+ref T[N1] memmove(T, size_t N1, size_t N2)(ref T[N1] s1, ref const T[N2] s2, size_t n) pure @safe
+{
+    assert(N1 >= n);
 
+    if(s1 !is s2)
+    {
+        foreach(size_t i; 0 .. n)
+            s1[i] = s2[i];
+    }
+    else
+    {
+        foreach(size_t i; 0 .. n)
+            s1[i] = s2[i];
+    }
+    return s1[];
+}
 unittest
 {
     int[6] a = [1,2,3,4,5,6];

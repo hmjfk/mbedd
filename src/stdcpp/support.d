@@ -51,6 +51,20 @@ nothrow:
 /// sizeof...演算子
 size_t sizeof___(Args...)(Args arg) => arg.length;
 
+version(none)
+// C++の{}と同じ役割をする表現子用総称型
+template initializer_literal(literal...)
+{
+    import stdcpp.initializer_list;
+    ///
+    alias T = Aliases!(literal);
+    ///
+    typeof(T[0])[T.length] tempInitArr = [T];
+    ///
+    initializer_list!(typeof(T[0])) tempInit =
+        initializer_list!(typeof(T[0]))(tempInitArr.ptr, tempInitArr.sizeof);
+}
+
 /**
 もともとは、std.traitsにあったもの。
  C++側の型制約
