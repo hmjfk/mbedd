@@ -24,6 +24,7 @@
 module stdcpp.initializer_list;
 import core.attribute: weak;
 
+version(none)
 extern (C++,"std")
 {
     extern(C++, struct)
