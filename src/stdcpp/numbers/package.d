@@ -25,4 +25,4 @@ module stdcpp.numbers;
 public static import stdcpp.numbers.numbers;
 
 /// namespace
-alias numbers = stdcpp.numbers.numbers.numbers;
+alias numbers = stdcpp.numbers.numbers;

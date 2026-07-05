@@ -30,7 +30,7 @@ Standards: IEEE Std 1003.1™-2024(POSIX.1-2024)
 POSIX規格では、定数値を八進数で表記すると規定されている。しかし、D2.112.0時点では八進接頭辞が存在しないため、この説明においてはC2y規格で採用された記法を用いている。
 +/
 //  なお、source中では十六進数で表記している。
-module src.stdc.tar;
+module stdc.tar;
 
 ///
 enum TMAGIC = "ustar";

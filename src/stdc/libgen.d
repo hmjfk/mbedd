@@ -22,7 +22,7 @@
     <http://www.gnu.org/licenses/>.
 */
 
-module src.stdc.libgen;
+module stdc.libgen;
 
 extern(C):
 @nogc:
