@@ -34,7 +34,7 @@ header description
 
 
 // mbedd and mdrt version
-/*h
+/*
     mbedd - 組み込みシステム向けのD言語標準ライブラリとDruntime
     Copyright (C) 2025 - Denkousi
 
