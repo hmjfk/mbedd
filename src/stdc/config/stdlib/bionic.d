@@ -1,0 +1,1 @@
+module stdc.config.stdlib;
