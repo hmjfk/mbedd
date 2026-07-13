@@ -1,5 +1,5 @@
 /*
-    libmbedD - 組み込みシステム向けのD言語標準ライブラリとDruntime
+    mbedd - 組み込みシステム向けのD言語標準ライブラリとDruntime
     Copyright (C) 2025 - Denkousi
 
     This program is free software: you can redistribute it and/or modify
@@ -21,10 +21,9 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
-module src.stdc;
+module stdc;
 
 version(none):
-public import stdc.assert_;
 public import stdc.augarith;
 public import stdc.ctype;
 public import stdc.complex;
