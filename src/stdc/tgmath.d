@@ -34,7 +34,7 @@ In D, not supported _Float*N* and _Decimal*N* types.
 Of course _Float*N*/_Decimal*N* version function not implementation.
 +/
 
-// since C23
+/// since C23
 enum __STDC_VERSION_TGMATH_H__ = 202311L;
 
 // work only
