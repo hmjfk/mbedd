@@ -39,7 +39,7 @@ if(__traits(isIntegral ,IntType))
 /// Examples: ubyte type used bit operation.
 unittest
 {
-    import mbedd.stdc.stdio;
+    import stdc.stdio;
 
     const ubyte c = 0b1111;
 
