@@ -42,7 +42,7 @@ void main()
 
 }
 /*
-Property関数用識別子一覧。実際はobject名前空間にてruntimeの関数を暗黙に宣言しているに過ぎない。
+Property関数用識別子一覧。実際はobject名前空間からruntimeの関数を暗黙に取り込んでいるに過ぎない。
 配列：assumeSafeAppend capacity dup idup reserve
 連想配列：byKey byKeyValue byValue clear dup get keys rehash require update values
 */
