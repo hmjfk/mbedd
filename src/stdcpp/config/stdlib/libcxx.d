@@ -1,2 +1,2 @@
-module stdcpp.config.stdlib.libcxx;
+module stdcpp.config.stdlib;
 
