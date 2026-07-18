@@ -24,6 +24,7 @@
 module stdcpp.cstddef;
 
 import core.attribute: weak;
+public import stdc.stddef;
 public import stdcpp.version_: __cpp_lib_byte;
 
 /**

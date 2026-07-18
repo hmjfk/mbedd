@@ -22,9 +22,10 @@
     <http://www.gnu.org/licenses/>.
 */
 module stdcpp.initializer_list;
+public import stdcpp.cstddef: size_t;
 import core.attribute: weak;
 
-version(none)
+
 extern (C++,"std")
 {
     extern(C++, struct)
@@ -51,24 +52,29 @@ extern (C++,"std")
         alias iterator = const(E)*;
         ///
         alias const_iterator = const(E)*;
+        
+    @weak:
         ///
-        this(iterator ThisBegin_element, size_type ThisLength) pure nothrow @weak
+        version(none)
+        this();
+        ///
+        this(iterator ThisBegin_element, size_type ThisLength) pure nothrow
         {
             begin_element = ThisBegin_element;
             length = ThisLength;
         }
         ///
-        size_type size() immutable nothrow
+        size_type size() const nothrow
         {
             return length;
         }
         ///
-        iterator begin() immutable nothrow
+        iterator begin() const nothrow
         {
             return begin_element;
         }
         ///
-        iterator end() immutable nothrow
+        iterator end() const nothrow
         {
             return begin() + size();
         }
@@ -77,12 +83,10 @@ extern (C++,"std")
         ///
         bool empty() const nothrow => size() == 0;
     }
-
-
 }
 
 unittest
 {
     int[5] a = [1, 2, 3, 4, 5];
-    initializer_list!int v(a.ptr, a.length);
+    auto v = initializer_list!int(&a[0], a.length);
 }
