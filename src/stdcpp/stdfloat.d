@@ -24,12 +24,19 @@
 module stdcpp.stdfloat;
 
 ///
+enum __STDCPP_FLOAT32_T__;
+///
+enum __STDCPP_FLOAT64_T__;
+
+///
 alias float32_t = float;
 ///
 alias float64_t = double;
 
 static if(real.sizeof * 8 == 128)
 {
+    ///
+    enum __STDCPP_FLOAT128_T__;
     ///
     alias float128_t = real;
 }
