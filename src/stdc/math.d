@@ -22,7 +22,14 @@
     <http://www.gnu.org/licenses/>.
 */
 module stdc.math;
-public import stdc.cheader.wchar_;
+/**
+<math.h>
+
+Copyright:  Copyright Denkousi 2025-
+License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html, GCC RLE).
+Authors:    Denkousi
+Source:     stdc/math.d
+*/
 public import stdc.cheader.math;
 
 

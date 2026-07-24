@@ -22,15 +22,14 @@
     <http://www.gnu.org/licenses/>.
 */
 module stdc.config;
-import stdc.cheader.config;
-public import mdrt.coredefs: string;
-
 /**
 Copyright: Copyright Denkousi 
 License:   $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE)
 Source:    stdc/config.d
-Standards: ISO/IEC 9899:2024, POSIX:2024
+Standards: ISO/IEC 9899:2024, IEEE Std 1003.1™-2024(POSIX.1-2024)
 */
+import stdc.cheader.config;
+public import mdrt.coredefs: string;
 
 // Darwin系列のOSかどうか調べるversion識別子は、Appleを使用する。
 

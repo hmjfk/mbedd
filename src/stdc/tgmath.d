@@ -26,9 +26,12 @@ static import stdc.math;
 static import stdc.complex;
 
 /++
-<tgmath.h>の独立実装
+<tgmath.h>
 
-識別子の衝突を回避するため、core.stdc.tgmathと同時に取り込まないこと。
+Copyright:  Copyright Denkousi 2025-
+License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html, GCC RLE).
+Authors:    Denkousi
+Source:     stdc/math.d
 
 In D, not supported _Float*N* and _Decimal*N* types.
 Of course _Float*N*/_Decimal*N* version function not implementation.

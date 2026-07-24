@@ -21,14 +21,14 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
-/++
+/**
 Copyright: Copyright Denkousi 
 License:   $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE)
-Source:    mbedd/stdc/cpio.d
+Source:    stdc/cpio.d
 Standards: IEEE Std 1003.1™-2024(POSIX.1-2024)
 
 POSIX規格では、定数値を八進数で表記すると規定されている。しかし、D2.112.0時点では八進接頭辞が存在しないため、この説明においてはC2y規格で採用された記法を用いている。
-+/
+*/
 module stdc.cpio;
 
 // なお、source中では十六進数で表記している。
