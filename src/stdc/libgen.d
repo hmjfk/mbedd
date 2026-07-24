@@ -23,31 +23,8 @@
 */
 
 module stdc.libgen;
-
-extern(C):
-@nogc:
-@live:
-nothrow:
-__gshared:
+public import stdc.cheader.libgen;
 
 version(Posix){} else
     pragma(msg, "Warning:  The current environment does not support Posix, which causes a link error. "~
                             "You need to build libc separately and link again.");
-
-private
-{
-    version(CRuntime_Glibc)
-    {
-        enum symblname_dirname = "__xpg_basename";
-    }
-    else
-    {
-        enum symblname_dirname  = "dirname";
-    }
-}
-
-///
-inout(char)* basename(scope inout(char)* path) pure;
-///
-pragma(mangle, symblname_dirname)
-inout(char)* dirname(scope inout(char)* path) pure;

@@ -23,6 +23,8 @@
 */
 module stdc.math;
 public import stdc.cheader.wchar_;
+public import stdc.cheader.math;
+
 
 ///
 enum __STDC_VERSION_MATH_H__ = 202311L;

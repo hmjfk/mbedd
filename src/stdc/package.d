@@ -23,7 +23,6 @@
 */
 module stdc;
 
-version(none):
 public import stdc.augarith;
 public import stdc.ctype;
 public import stdc.complex;
@@ -33,6 +32,7 @@ public import stdc.inttypes;
 public import stdc.locale;
 public import stdc.math;
 public import stdc.signal;
+version(none)
 public import stdc.stdarg;
 public import stdc.stdatomic;
 public import stdc.stdbit;
