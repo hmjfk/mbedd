@@ -29,6 +29,7 @@ Source:    stdc/config.d
 Standards: ISO/IEC 9899:2024, IEEE Std 1003.1™-2024(POSIX.1-2024)
 */
 import stdc.cheader.config;
+public import stdc.cheader.config: c_long, c_ulong;
 public import mdrt.coredefs: string;
 
 // Darwin系列のOSかどうか調べるversion識別子は、Appleを使用する。
