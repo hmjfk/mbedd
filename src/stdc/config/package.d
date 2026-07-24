@@ -22,13 +22,14 @@
     <http://www.gnu.org/licenses/>.
 */
 module stdc.config;
+import stdc.cheader.config;
 public import mdrt.coredefs: string;
 
 /**
 Copyright: Copyright Denkousi 
 License:   $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE)
-Source:    mbedd/stdc/config.d
-Standards: ISO/IEC 9899:2024
+Source:    stdc/config.d
+Standards: ISO/IEC 9899:2024, POSIX:2024
 */
 
 // Darwin系列のOSかどうか調べるversion識別子は、Appleを使用する。
@@ -55,9 +56,11 @@ enum
 ///
 enum  __STDC_VERSION__ = 202411L;
 ///
-enum _POSIX_C_SOURCE = 202405L;
+static if(is(typeof(posix_c_source)))
+enum _POSIX_C_SOURCE = posix_c_source;
 ///
-enum _XOPEN_SOURCE = 800;
+static if(is(typeof(xopen_source)))
+enum _XOPEN_SOURCE = xopen_source;
 
 /*
 TODO: 以前は独立環境であるかどうか調べるのにstatic if(__traits(compiles, Hosting))を使っていたが、
