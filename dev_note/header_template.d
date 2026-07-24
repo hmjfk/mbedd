@@ -60,7 +60,7 @@ header description
 /**
 header summary
 Copyright:  Copyright Denkousi 2025-
-License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE).
+License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html, GCC RLE).
 License:    Original is 
 Authors:    Denkousi
 Source:     
