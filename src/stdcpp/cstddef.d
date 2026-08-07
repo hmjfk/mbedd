@@ -40,8 +40,6 @@ if(__traits(isIntegral ,IntType))
 /// Examples: ubyte type used bit operation.
 unittest
 {
-    import stdc.stdio;
-
     const ubyte c = 0b1111;
 
     auto a = c << 2;
