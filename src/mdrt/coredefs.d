@@ -45,8 +45,8 @@ alias noreturn = typeof(*null);
 alias Void = void[1];
 
 /// string type
-alias string  = immutable(char)[];
+alias string  = typeof("");
 /// ditto
-alias wstring = immutable(wchar)[];
+alias wstring = typeof(""w);
 /// ditto
-alias dstring = immutable(dchar)[];
+alias dstring = typeof(""d);
