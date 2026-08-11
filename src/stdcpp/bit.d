@@ -23,42 +23,67 @@
 */
 module stdcpp.bit;
 
+/// all freestanding
 @nogc
 extern (C++, "std")
 {
-    /// bit_cast
+    /// [bit.cast], bit_cast
     To bit_cast(To, From)(const ref From from) nothrow; // The C++ side uses a `requires` clause.
     
-    /// byteswap
+    /// [bit.byteswap], byteswap
     T byteswap(T)(T n) nothrow;
     
-    /// integral powers of 2
+    /// [bit.pow.two], integral powers of 2
     bool has_single_bit(T)(T x) nothrow;
-    ///
+    /// ditto
     T bit_ceil(T)(T x);
-    ///
+    /// ditto
     T bit_floor(T)(T x) nothrow;
-    ///
+    /// ditto
     int bit_width(T)(T x) nothrow;
 
-    /// rotating
+    /// [bit.shift], shifting
+    T shl(T, S)(T x, S s) nothrow;
+    /// ditto
+    T shr(T, S)(T x, S s) nothrow;
+
+    /// [bit.rotate], rotating
     T rotl(T)(T x, int s) nothrow;
-    ///
+    /// ditto
     T rotr(T)(T x, int s) nothrow;
     
-    /// counting
+    /// [bit.count], counting
     int countl_zero(T)(T x) nothrow;
-    ///
+    /// ditto
     int countl_one(T)(T x) nothrow;
-    ///
+    /// ditto
     int countr_zero(T)(T x) nothrow;
-    ///
+    /// ditto
     int countr_one(T)(T x) nothrow;
-    ///
+    /// ditto
     int popcount(T)(T x) nothrow;
+    
+    /// [bit.permute], permutation
+    T bit_reverse(T)(T x) nothrow;
+    /// ditto
+    T bit_repeat(T)(T x, int l);
+    /// ditto
+    T bit_compress(T)(T x, T m) nothrow;
+    /// ditto
+    T bit_expand(T)(T x, T m) nothrow;
 
-    /// endian
-    version (LittleEndian)
+    /// [bit.endian], endian
+    version(D_Ddoc)
+    {
+        private enum see_below = true;
+        enum endian
+        {
+            little = see_below,
+            big = see_below,
+            native = see_below
+        }
+    }
+    else version (LittleEndian)
     {
         enum endian
         {
