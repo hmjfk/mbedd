@@ -41,7 +41,7 @@ Source:    Original is $(PHOBOSSRC std/meta.d).
 ## dynamic_cast
 RTTIを使うため。
 ## reflexpr演算子
-ABIには影響しない上、Dが持っている既存の言語機能を使えば、C++のそれよりもはるかに高度な自己言及ができる。
+ABIには影響しない上、Dが持っている既存の言語機能を使えば、C++のそれよりもはるかに高度な自己言及ができるため。
 */
 module stdcpp.support;
 
@@ -50,6 +50,15 @@ nothrow:
 
 /// sizeof...演算子
 size_t sizeof___(Args...)(Args arg) => arg.length;
+
+/// C++ style cast operator
+U static_cast(T, U)(T a) => cast(U)a;
+
+/// ditto
+U const_cast(T, U)(T a) => cast(U)a;
+
+/// ditto
+U reinterpret_cast(T, U)(T a) => cast(U)a;
 
 version(none)
 // C++の{}と同じ役割をする表現子用総称型
@@ -65,17 +74,19 @@ template initializer_literal(literal...)
         initializer_list!(typeof(T[0]))(tempInitArr.ptr, tempInitArr.sizeof);
 }
 
+
 /**
 もともとは、std.traitsにあったもの。
- C++側の型制約
----
+
+C++側の型制約
+```C++
 template <class T, T... I>は、
----
+```
 は、
 ---
  if(is(Repeat!(I.length, T) == I))
 ---
-とすること。
+にする。
 */
 template Repeat(size_t n, items...)
 {
