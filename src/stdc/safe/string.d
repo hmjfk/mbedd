@@ -86,22 +86,30 @@ unittest
     for(size_t i; i< b.length; i++)
         printf("%d,", b[i]);
 }
-version(none)
-{
 ///
 ref T[N1] memmove(T, size_t N1, size_t N2)(ref T[N1] s1, ref const T[N2] s2, size_t n) pure @safe
 {
     assert(N1 >= n);
 
-    if(s1 !is s2)
+    if(s1[0] !is s2[0])
     {
         foreach(size_t i; 0 .. n)
-            s1[i] = s2[i];
+        {
+            if(s1[i] !is s2[i])
+                s1[i] = s2[i];
+            else
+                break;
+        }
     }
     else
     {
-        foreach(size_t i; 0 .. n)
-            s1[i] = s2[i];
+        foreach_reverse(size_t i; 0 .. n)
+        {
+            if(s1[i] !is s2[i])
+                s1[i] = s2[i];
+            else
+                break;
+        }
     }
     return s1[];
 }
@@ -113,7 +121,6 @@ unittest
     
     for(size_t i; i< b.length; i++)
         printf("%d,", b[i]);
-}
 }
 ///
 string strdup(string s)
