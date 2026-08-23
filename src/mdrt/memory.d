@@ -38,7 +38,7 @@ Source:     druntime/src/rt/dmain2.d
 
 module mdrt.memory;
 
-import mebdd.stdc.stdlib: malloc, free, alloca;
+import stdc.stdlib: malloc, free, alloca;
 
 @nogc:
 nothrow:
