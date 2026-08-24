@@ -29,10 +29,13 @@ Authors:    Denkousi
 */
 module stdc.stddef;
 public import stdc.cheader.stddef;
+import stdc.config: nullptr;
 
 ///
 enum __STDC_VERSION_STDDEF_H__ = 202311L;
 
+///
+enum NULL = nullptr;
 
 static if(!is(rsize_t))
 version(__STDC_WANT_LIB_EXT1__)
