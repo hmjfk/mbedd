@@ -115,8 +115,3 @@ else
 
 ///
 enum __STDC_VERSION_STDINT_H__ = 202311L;
-
-///
-enum PTRDIFF_WIDTH = ptrdiff_t.sizeof * 8;
-///
-enum SIZE_WIDTH = size_t.sizeof * 8;

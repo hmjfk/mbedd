@@ -28,7 +28,6 @@ License:   $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 h
 Source:    stdc/config.d
 Standards: ISO/IEC 9899:2024, IEEE Std 1003.1™-2024(POSIX.1-2024)
 */
-import stdc.cheader.config;
 public import stdc.cheader.config: c_long, c_ulong;
 public import mdrt.coredefs: string;
 
@@ -53,15 +52,6 @@ enum
     ///
     __STDC_EMBED_EMPTY__ = 2,
 }
-///
-enum  __STDC_VERSION__ = 202411L;
-///
-static if(is(typeof(posix_c_source)))
-enum _POSIX_C_SOURCE = posix_c_source;
-///
-static if(is(typeof(xopen_source)))
-enum _XOPEN_SOURCE = xopen_source;
-
 /*
 TODO: 以前は独立環境であるかどうか調べるのにstatic if(__traits(compiles, Hosting))を使っていたが、
 今後は、__STDC_HOSTED__に置き換える。
