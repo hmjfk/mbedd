@@ -46,24 +46,3 @@ enum LDBL_SNAN  = real.nan;
 enum INFINITY = float.infinity;
 ///
 enum float NAN = ()pure{ ulong v = 0x7FF0_0000_0000_0001; return *cast(double*) &v; }();
-
-///
-enum FLT_MANT_DIG = flt_mant_dig;
-///
-enum DBL_MANT_DIG = dbl_mant_dig;
-///
-enum LDBL_MANT_DIG = ldbl_mant_dig;
-
-///
-enum FLT_NORM_MAX = flt_norm_max;
-///
-enum DBL_NORM_MAX = dbl_norm_max;
-///
-enum LDBL_NORM_MAX = ldbl_norm_max;
-
-///
-enum FLT_TRUE_MIN = flt_true_min;
-///
-enum DBL_TRUE_MIN = dbl_flt_true_min;
-///
-enum LDBL_TRUE_MIN = ldbl_true_min;
