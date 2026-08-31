@@ -105,43 +105,6 @@ version(D_Ddoc)
 }
 else
 {
-    static if(is(typeof(fe_divbyzero)))
-    enum FE_DIVBYZERO = fe_divbyzero;
-    static if(is(typeof(fe_inexact)))
-    enum FE_INEXACT = fe_inexact;
-    static if(is(typeof(fe_invalid)))
-    enum FE_INVALID = fe_invalid;
-    static if(is(typeof(fe_overflow)))
-    enum FE_OVERFLOW = fe_overflow;
-    static if(is(typeof(fe_underflow)))
-    enum FE_UNDERFLOW = fe_underflow;
-
-    enum FE_DFL_MODE = fe_dfl_mode;
-
-    enum FE_ALL_EXCEPT = fe_all_except;
-
-    static if(is(typeof(fe_downward)))
-    enum FE_DOWNWARD = fe_downward;
-    static if(is(typeof(fe_tonearest)))
-    enum FE_TONEAREST = fe_tonearest;
-    static if(is(typeof(fe_tonearestfromzero)))
-    enum FE_TONEARESTFROMZERO = fe_tonearestfromzero;
-    static if(is(typeof(fe_towardzero)))
-    enum FE_TOWARDZERO = fe_towardzero;
-    static if(is(typeof(fe_upward)))
-    enum FE_UPWARD = fe_upward;
-
-    static if(is(typeof(fe_dec_downward)))
-    enum FE_DEC_DOWNWARD = fe_dec_downward;
-    static if(is(typeof(fe_dec_tonearest)))
-    enum FE_DEC_TONEAREST = fe_dec_tonearest;
-    static if(is(typeof(fe_dec_tonearestfromzero)))
-    enum FE_DEC_TONEARESTFROMZERO = fe_dec_tonearestfromzero;
-    static if(is(typeof(fe_dec_towardzero)))
-    enum FE_DEC_TOWARDZERO = fe_dec_towardzero;
-    static if(is(typeof(fe_dec_upward)))
-    enum FE_DEC_UPWARD = fe_dec_upward;
-
     enum FE_DFL_ENV = fe_dfl_env();
 }
 
