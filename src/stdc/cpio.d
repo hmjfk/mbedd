@@ -23,7 +23,7 @@
 */
 /**
 Copyright: Copyright Denkousi 
-License:   $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE)
+License:   $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html, GCC RLE)
 Source:    stdc/cpio.d
 Standards: IEEE Std 1003.1™-2024(POSIX.1-2024)
 

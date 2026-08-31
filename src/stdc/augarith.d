@@ -23,8 +23,8 @@
 */
 /++
 Copyright: Copyright Denkousi 
-License:   $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE)
-Source:    mbedd/stdc/augarith.d
+License:   $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html, GCC RLE)
+Source:    stdc/augarith.d
 Standards: ISO/IEC TS 18661-4:2025
 
 In D, not supported _Float*N* and _Decimal*N* types.
