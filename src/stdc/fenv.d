@@ -123,10 +123,12 @@ int fetestexceptflag(scope const(fexcept_t*) flagp, int excepts);
 ///
 int fetestexcept(int excepts);
 ///
+static if(is(typeof(femode_t)))
 int fegetmode(femode_t* modep);
 ///
 int fegetround();
 ///
+static if(is(typeof(femode_t)))
 int fesetmode(scope const(femode_t*) modep);
 ///
 int fesetround(int rnd);
