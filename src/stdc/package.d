@@ -63,6 +63,7 @@ XSIにも対応予定
 public import stdc.augarith;
 public import stdc.ctype;
 public import stdc.complex;
+public import stdc.config;
 public import stdc.fenv;
 public import stdc.float_;
 public import stdc.inttypes;
