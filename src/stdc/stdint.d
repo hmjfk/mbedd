@@ -112,6 +112,3 @@ version(D_Ddoc)
 }
 else
     public import stdc.cheader.stdint;
-
-///
-enum __STDC_VERSION_STDINT_H__ = 202311L;

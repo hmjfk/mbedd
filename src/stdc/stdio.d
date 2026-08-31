@@ -23,6 +23,3 @@
 */
 module stdc.stdio;
 public import stdc.cheader.stdio;
-
-///
-enum __STDC_VERSION_STDIO_H__ = 202311L;

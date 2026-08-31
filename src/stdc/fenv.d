@@ -41,9 +41,6 @@ extern(C):
 @nogc:
 nothrow:
 
-///
-enum __STDC_VERSION_FENV_H__ = 202311L;
-
 version(D_Ddoc)
 {
     private

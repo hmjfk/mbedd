@@ -36,9 +36,6 @@ module stdc.float_;
 public import stdc.cheader.float_;
 
 ///
-enum __STDC_VERSION_FLOAT_H__ = 202311L;
-
-///
 enum FLT_SNAN = float.nan;
 ///
 enum DBL_SNAN = double.nan;

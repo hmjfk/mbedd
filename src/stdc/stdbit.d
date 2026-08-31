@@ -24,8 +24,6 @@
 module stdc.stdbit;
 public import stdc.cheader.stdbit;
 
-/// ditto
-enum __STDC_VERSION_STDBIT_H__ = 202311L;
 
 /// ditto
 enum : bool

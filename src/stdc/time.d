@@ -23,6 +23,3 @@
 */
 module stdc.time;
 public import stdc.cheader.time;
-
-///
-enum __STDC_VERSION_TIME_H__ = 202311L;

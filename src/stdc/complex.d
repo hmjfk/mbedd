@@ -23,6 +23,3 @@
 */
 module stdc.complex;
 public import stdc.cheader.complex;
-
-///
-enum __STDC_VERSION_COMPLEX_H__ = 202311L;

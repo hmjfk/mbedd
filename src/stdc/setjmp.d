@@ -23,6 +23,3 @@
 */
 module stdc.setjmp;
 public import stdc.cheader.setjmp;
-
-///
-enum __STDC_VERSION_SETJMP_H__ = 202311L;

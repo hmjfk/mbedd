@@ -23,6 +23,3 @@
 */
 module stdc.wchar_;
 public import stdc.cheader.wchar_;
-
-///
-enum __STDC_VERSION_WCHAR_H__ = 202311L;
