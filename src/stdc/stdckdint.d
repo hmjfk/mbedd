@@ -21,13 +21,12 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
-module stdc.stdckdint;
 /**
 Copyright:  Copyright Denkousi 2025-
 Copyright:  2023 Justine Alexandra Roberts Tunney
 Copyright: 	Copyright The D Language Foundation 2005 - 2015
 License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html, GCC RLE).
-License:    Original is $(LINK2 https://raw.githubusercontent.com/jart/jtckdint/refs/heads/master/LICENSE.txt ISC License).
+License:    Original is $(LINK2 https://raw.githubusercontent.com/jart/jtckdint/refs/heads/master/LICENSE.txt, ISC License).
 License:    Original is $(HTTP www.boost.org/LICENSE_1_0.txt, Boost License 1.0).
 Authors:    Denkousi
 Authors: 	Manu Evans
@@ -37,6 +36,8 @@ Standards:  ISO/IEC 9899:2024, ISO/IEC 14882:2026
 
 本部品集では、移植性を確保するためにC++側の宣言を採用することとし、実装も提供している。これは、C側で組み込み関数の形態をとるためである。
 */
+module stdc.stdckdint;
+
 import stdc.stdint : intmax_t, uintmax_t;
 
 extern (C++):
