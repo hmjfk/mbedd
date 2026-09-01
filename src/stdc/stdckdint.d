@@ -32,7 +32,7 @@ Authors:    Denkousi
 Authors: 	Manu Evans
 Source:     stdc/stdckdint.d
 Source:     Original is $(PHOBOSSRC std/traits.d)
-Standards:  ISO/IEC 9899:2024, ISO/IEC 14882:2026
+Standards:  ISO/IEC 9899:2024
 
 本部品集では、移植性を確保するためにC++側の宣言を採用することとし、実装も提供している。これは、C側で組み込み関数の形態をとるためである。
 */
