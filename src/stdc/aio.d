@@ -28,4 +28,4 @@ Source:    stdc/aio.d
 Standards: IEEE Std 1003.1™-2024(POSIX.1-2024)
 */
 module stdc.aio;
-import stdc.cheader.aio;
+public import stdc.cheader.aio;
