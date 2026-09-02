@@ -21,5 +21,5 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
-module mbedd.stdc.limits;
-import stdc.cheader.limits;
+module stdc.limits;
+import cheader.limits;
