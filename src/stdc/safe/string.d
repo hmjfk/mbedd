@@ -26,11 +26,9 @@ Source: https://dlang.org/spec/function.html#safe-interfaces
 
 module stdc.safe.string;
 
-version(withDruntime){} else
-{
-    import stdc.stddef: size_t;
-    import mdrt.coredefs;
-}
+import stdc.stddef: size_t;
+import mdrt.coredefs;
+
 @nogc:
 nothrow:
 extern(D):
