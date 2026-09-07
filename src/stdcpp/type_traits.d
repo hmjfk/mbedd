@@ -33,6 +33,8 @@ Authors: 	Manu Evans
 Source:     Original is $(PHOBOSSRC std/meta.d)
 
 注意点として、D言語固有の型でこれらの総称型が具現化された場合、false_typeから派生することに注意すべきである。
+さらに、C++規格では**volatile**や参照に関する一連の総称型をこのheaderで規定しているが、
+D言語側からすると、これらは型の一部ではなく意味をなさないため実装されていない。互換性のために識別子だけが定義されている。
 */
 module stdcpp.type_traits;
 
@@ -252,27 +254,23 @@ extern (C++, "std")
     ///
     struct is_fundamental(T)
     {
-        ///
         bool_constant!(
             is_void_v!T ||
                 is_null_pointer_v!T ||
                 is_floating_point_v!T ||
                 is_arithmetic_v!T
         ) temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_object(T)
     {
-        ///
         bool_constant!(
             is_scalar_v!T ||
                 is_array_v!T ||
                 is_class_v!T
         ) temp;
-        ///
         alias temp this;
     }
 
@@ -280,16 +278,13 @@ extern (C++, "std")
     ///
     struct is_scalar(T)
     {
-        ///
         bool_constant!(__traits(isScalar, T)) temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_compound(T)
     {
-        ///
         bool_constant!(
             is_array_v!T ||
                 is_function_v!T ||
@@ -300,7 +295,6 @@ extern (C++, "std")
                 is_enum_v!T ||
                 is_member_pointer_v!T
         ) temp;
-        ///
         alias temp this;
     }
 
@@ -311,9 +305,7 @@ extern (C++, "std")
     deprecated("D does not have member pointer types.")
     struct is_member_pointer(T)
     {
-        ///
         false_type temp;
-        ///
         alias temp this;
     }
 
@@ -321,9 +313,7 @@ extern (C++, "std")
     ///
     struct is_const(T)
     {
-        ///
         bool_constant!(is(T == const)) temp;
-        ///
         alias temp this;
     }
 
@@ -335,9 +325,7 @@ extern (C++, "std")
     "consequently, it always evaluates to false.")
     struct is_volatile(T)
     {
-        ///
         false_type temp;
-        ///
         alias temp this;
 
     }
@@ -421,7 +409,6 @@ extern (C++, "std")
     ///
     struct is_polymorphic(T)
     {
-        ///
         bool_constant!(
         {
             static foreach(typeof("") member; [__traits(derivedMembers, T)])
@@ -434,16 +421,13 @@ extern (C++, "std")
             return false;
         }()
         ) temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_abstract(T)
     {
-        ///
         bool_constant!(__traits(isAbstractClass, T)) temp;
-        ///
         alias temp this;
     }
 
@@ -454,54 +438,42 @@ extern (C++, "std")
     型から__traits(getParameterStorageClasses)から予約語finalを検索するのが望ましいが、
     初期の実装では簡略化する。
     */
-        ///
         bool_constant!(__traits(isFinalClass, T) || __traits(isFinalFunction, T)) temp;
-        ///
         alias temp this;
     }
     ///
-    deprecated  // since C++20
+    deprecated
     struct is_pod(T)
     {
-        ///
         bool_constant!(__traits(isPOD, T)) temp;
-        ///
         alias temp this;
     }
     ///
     version(none)
     struct is_aggregate(T)
     {
-        ///
         bool_constant!(__traits(hasCopyConstructor, T) && false ) temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_signed(T)
     {
-        ///
         bool_constant!(is_arithmetic_v!T && !__traits(isUnsigned, T) && is(T : real)) temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_unsigned(T)
     {
-        ///
         bool_constant!(is_arithmetic_v!T && __traits(isUnsigned, T)) temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_bounded_array(T)
     {
-        ///
         bool_constant!(__traits(isStaticArray, T)) temp;
-        ///
         alias temp this;
     }
     /**
@@ -514,63 +486,49 @@ extern (C++, "std")
     ///
     struct is_constructible(T, Args...)
     {
-        ///
         bool_constant!(__traits(compiles, (){ T a = T(Args); })) temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_default_constructible(T)
     {
-        ///
         bool_constant!(__traits(compiles, (){T a;})) temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_copy_constructible(T)
     {
-        ///
         bool_constant!(__traits(compiles, (){ T a = T(), b = T();  a = b;}) && __traits(isCopyable, T)) temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_move_constructible(T)
     {
-        ///
         bool_constant!(__traits(compiles, (){ T a = T(), b = T();  a = __rvalue(b);})) temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_assignable(T, U)
     {
-        ///
         bool_constant!(__traits(compiles, (){T a = U();})) temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_copy_assignable(T)
     {
-        ///
         bool_constant!(__traits(compiles, (){ T a; T b = a; })) temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_move_assignable(T)
     {
-        ///
         bool_constant!(__traits(compiles, (){ T a; T b = __rvalue(a); })) temp;
-        ///
         alias temp this;
     }
 version(none)
@@ -580,9 +538,7 @@ version(none)
     {
         import stdcpp.concepts;
 
-        ///
         bool_constant!(swappable_with!T) temp;
-        ///
         alias temp this;
     }
 
@@ -591,45 +547,38 @@ version(none)
     {
         import stdcpp.concepts;
 
-        ///
         bool_constant!(swappable!T) temp;
-        ///
         alias temp this;
     }
+}
 
     ///
     struct is_destructible(T)
     {
-        ///
-        bool_constant!() temp;
-        ///
+        bool_constant!(__traits(compiles, remove_all_extents_t!T().__dtor)) temp;
         alias temp this;
     }
 
+version(none)
+{
     ///
     struct is_trivially_constructible(T, Args...)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_trivially_default_constructible(T)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_trivially_default_constructible(T)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
 
@@ -651,183 +600,149 @@ version(none)
     ///
     struct is_trivially_move_constructible(T)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_trivially_assignable(T, U)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_trivially_copy_assignable(T)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_trivially_move_assignable(T)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_trivially_destructible(T)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
-
+}
     ///
     struct is_nothrow_constructible(T, Args...)
     {
-        ///
-        bool_constant!() temp;
-        ///
+        bool_constant!(__traits(compiles, ()nothrow{T a = T(Args);})) temp;
         alias temp this;
     }
 
     ///
     struct is_nothrow_default_constructible(T)
     {
-        ///
-        bool_constant!() temp;
-        ///
+        bool_constant!(__traits(compiles, ()nothrow{T a;})) temp;
         alias temp this;
     }
 
     ///
     struct is_nothrow_copy_constructible(T)
     {
-        ///
-        bool_constant!() temp;
-        ///
+        bool_constant!(__traits(compiles, ()nothrow{ T a = T(), b = T();  a = b;}) && __traits(isCopyable, T)) temp;
         alias temp this;
     }
 
     ///
     struct is_nothrow_move_constructible(T)
     {
-        ///
-        bool_constant!() temp;
-        ///
+        bool_constant!(__traits(compiles, ()nothrow{ T a = T(), b = T();  a = __rvalue(b);})) temp;
         alias temp this;
     }
 
     ///
     struct is_nothrow_assignable(T, U)
     {
-        ///
-        bool_constant!() temp;
-        ///
+        bool_constant!(__traits(compiles, ()nothrow{T a = U();})) temp;
         alias temp this;
     }
 
     ///
     struct is_nothrow_copy_assignable(T)
     {
-        ///
-        bool_constant!() temp;
-        ///
+        bool_constant!(__traits(compiles, ()nothrow{ T a; T b = a; })) temp;
         alias temp this;
     }
 
     ///
     struct is_nothrow_move_assignable(T)
     {
-        ///
-        bool_constant!() temp;
-        ///
+        bool_constant!(__traits(compiles, ()nothrow{ T a; T b = __rvalue(a); })) temp;
         alias temp this;
     }
-
+version(none)
+{
     ///
     struct is_nothrow_swappable_with(T, U)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_nothrow_swappable(T)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
-
+}
     ///
     struct is_nothrow_destructible(T)
     {
-        ///
-        bool_constant!() temp;
-        ///
+        bool_constant!(__traits(compiles, () nothrow{remove_all_extents_t!T().__dtor;})) temp;
         alias temp this;
     }
 
     ///
+    version(none)
     struct is_implicit_lifetime(T)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
+
 
     ///
     struct has_virtual_destructor(T)
     {
-        ///
-        bool_constant!() temp;
-        ///
+        bool_constant!(__traits(isAbstractFunction, __traits(getMember, T, "__dtor"))) temp;
         alias temp this;
     }
 
+version(none)
+{
     ///
     struct has_unique_object_representations(T)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
 
     ///
     struct reference_constructs_from_temporary(T, U)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
 
     ///
     struct reference_converts_from_temporary(T, U)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
 }
+
     /// [meta.unary.prop.query], type property queries
     ///
     struct alignment_of(T)
@@ -846,10 +761,8 @@ version(none)
             else
                 enum v = 0;
         }
-        ///
         integral_constant!(size_t, v) temp;
 
-        ///
         alias temp this;
     }
 
@@ -885,9 +798,7 @@ version(none)
             }
         }
 
-        ///
         integral_constant!(size_t, countExtent!(T, I)) temp;
-        ///
         alias temp this;
     }
 
@@ -902,54 +813,57 @@ version(none)
     ///
     struct is_base_of(Base, Derived)
     {
-        ///
         bool_constant!((is(Base == class) && is(Derived == class)) || is(Base == Derived) || is(Derived == super)) temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_convertible(From, To)
     {
-        ///
         bool_constant!(is(From:To)) temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_nothrow_convertible(From, To)
     {
-        ///
-        bool_constant!() temp;
-        ///
+        bool_constant!(__traits(compiles, 
+                                        (){
+                                                To f(From a) nothrow
+                                                {
+                                                    static if((is(From == struct) || 
+                                                               is(From == union) || 
+                                                               is(From == class)) && 
+                                                               is(To == bool))
+                                                        return !a; // bool型変換演算子関数用。D言語の場合は、暗黙の型変換が許される変換演算子関数
+                                                    else
+                                                        return a;
+                                                }
+                                            }
+                                        )) temp;
         alias temp this;
     }
 
+version(none)
+{
     ///
     struct is_layout_compatible(T, U)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_pointer_interconvertible_base_of(Base, Derived)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
     }
 
     ///
     struct is_invocable(Fn, ArgTypes...)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
 
     }
@@ -957,9 +871,7 @@ version(none)
     ///
     struct is_invocable_r(Fn, ArgTypes...)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
 
     }
@@ -967,9 +879,7 @@ version(none)
     ///
     struct is_nothrow_invocable(Fn, ArgTypes...)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
 
     }
@@ -977,13 +887,11 @@ version(none)
     ///
     struct is_nothrow_invocable_r(R, Fn, ArgTypes...)
     {
-        ///
         bool_constant!() temp;
-        ///
         alias temp this;
 
     }
-
+}
     /// [meta.trans.cv], const-volatile modifications
     ///
     struct remove_const(T)
@@ -993,7 +901,10 @@ version(none)
             alias type = U;
         }
     }
-
+    /**
+    # 規格からの変更点
+    D言語における発揮性操作は型修飾子ではなく言語の組込関数で表すため、常にTを返す。
+    */
     ///
     deprecated(
         "In D, volatile is a built-in function declared in core.volatile; Therefore, it does nothing.")
@@ -1002,13 +913,13 @@ version(none)
         alias type = T;
     }
 
-    ///
+    /**
+    # 規格からの変更点
+    D言語における発揮性操作は型修飾子ではなく言語の組込関数で表すため、remove_constの別名となっている。
+    */
     deprecated(
         "In D, volatile is a built-in function declared in core.volatile; as a result, it only ever removes const.")
-    struct remove_cv(T)
-    {
-        alias type = remove_const!T;
-    }
+    alias remove_cv(T) = remove_const!T; 
 
     ///
     template add_const(T)
@@ -1023,7 +934,10 @@ version(none)
         }
     }
 
-    ///
+    /**
+    # 規格からの変更点
+    remove_volatileと同様な変更がある。
+    */
     deprecated(
         "In D, volatile is a built-in function declared in core.volatile; Therefore, it does nothing.")
     template add_volatile(T)
@@ -1031,76 +945,83 @@ version(none)
         alias type = T;
     }
 
+    /**
+    # 規格からの変更点
+    remove_volatileと同様な変更がある。
+    */
     deprecated(
         "In D, volatile is a built-in function declared in core.volatile; consequently, it only ever adds const.")
-    template add_cv(T)
-    {
-        alias type = const(T);
-    }
+    alias add_cv(T) = add_const!T;
 
     ///
     alias remove_const_t(T) = remove_const!T.type;
 
     ///
+    /**
+    # 規格からの変更点
+    remove_volatileと同様な変更がある。
+    */
     deprecated(
         "In D, volatile is a built-in function declared in core.volatile; Therefore, it does nothing.")
     alias remove_volatile_t(T) = remove_volatile!T.type;
 
-    ///
+    /// ditto
     deprecated(
         "In D, volatile is a built-in function declared in core.volatile; as a result, it only ever removes const.")
     alias remove_cv_t(T) = remove_cv!T.type;
 
-    ///
+    /// 
     alias add_const_t(T) = add_const!T.type;
 
-    ///
+    /**
+    # 規格からの変更点
+    remove_volatileと同様な変更がある。
+    */
     deprecated(
         "In D, volatile is a built-in function declared in core.volatile; Therefore, it does nothing.")
     alias add_volatile_t(T) = add_volatile!T.type;
 
-    ///
+    /// ditto
     deprecated(
         "In D, volatile is a built-in function declared in core.volatile; consequently, it only ever adds const.")
     alias add_cv_t(T) = add_cv!T.type;
 
     /// [meta.trans.ref], reference modifications
-    ///
     deprecated(
         "In D, references are not type qualifiers but storage classes; therefore, they have no effect.")
-    struct remove_reference(T)
     {
-        alias type = T;
+        /**
+        # 規格からの変更点
+        D言語における参照は型ではなく記憶域区間指定子になっているため、常にTを返す。
+        */
+        struct remove_reference(T)
+        {
+            alias type = T;
+        }
+
+        /// ditto
+        struct add_lvalue_reference(T)
+        {
+            alias type = T;
+        }
+
+        /// ditto
+
+        struct add_rvalue_reference(T)
+        {
+            alias type = T;
+        }
+
+        /// D言語における参照は型ではなく記憶域区間指定子になっているため、この別名は意味を持たない。
+        alias remove_reference_t(T) = remove_reference!T.type;
+
+        /// ditto
+        alias add_lvalue_reference_t(T) = add_lvalue_reference!T.type;
+
+        /// ditto
+        alias add_rvalue_reference_t(T) = add_rvalue_reference!T.type;
     }
-
-    ///
-    deprecated(
-        "In D, references are not type qualifiers but storage classes; therefore, they have no effect.")
-    struct add_lvalue_reference(T)
-    {
-        alias type = T;
-    }
-
-    ///
-    deprecated(
-        "In D, references are not type qualifiers but storage classes; therefore, they have no effect.")
-    struct add_rvalue_reference(T)
-    {
-        alias type = T;
-    }
-
-    ///
-    alias remove_reference_t(T) = remove_reference!T.type;
-
-    ///
-    alias add_lvalue_reference_t(T) = add_lvalue_reference!T.type;
-
-    ///
-    alias add_rvalue_reference_t(T) = add_rvalue_reference!T.type;
-
     /// sign modifications
-    ///
-    // std.traits.Signedを改変
     template make_signed(T) 
     if(is_integral_v!T && !is(T == bool))
     {
@@ -1140,7 +1061,6 @@ version(none)
     }
 
     ///
-    // std.traits.Unsignedを改変
     template make_unsigned(T)
     if(is_integral_v!T && !is(T == bool))
     {
@@ -1233,7 +1153,7 @@ version(none)
     ///
     alias add_pointer_t(T) = add_pointer!T.type;
 
-    /// 指示型が指している型を取り出す。<type_traits>の拡張
+    /// 指示型が指している型を取り出す。mbedd拡張
     template pointerBaseType(T)
     {
         static if(is(T U == U*))
@@ -1256,7 +1176,8 @@ version(none)
     {
         alias type = T;
     }
-        ///
+
+    ///
     deprecated(
         "In D, references and volatile aren't part of the type system. Therefore, only const is ever removed.")
     template remove_cvref(T)
@@ -1265,18 +1186,11 @@ version(none)
     }
 
     ///
-    template decay(alias T)
+    template decay(T)
     {
-        // exposition only
-        version (none)
-        {
-            alias U = remove_reference_t!T;
-        }
-        else
+        private alias U = /* remove_reference!*/ T;
 
-            alias U = T; // In D, remove_reference_t has no effect and is therefore omitted.
-
-        static if (is_bounded_array_v!U || is_function_v!U)
+        static if (is_bounded_array_v!U || is_function_v)
         {
             alias type = U*;
         }
@@ -1340,15 +1254,13 @@ version(none)
             alias type = common_type_t!(common_type_t!(T[0], T[1]), T[2..$]);
     }
 
-    ///
-    template basic_common_reference(T, U, TQual, UQual)
-            if (__traits(isTemplate, TQual) && __traits(isTemplate, UQual))
-    {
-    }
 
     ///
     deprecated("In D, references aren't type qualifiers but storage classes;"~
     "as a result, they behave the same way as std.common_type.")
+    alias basic_common_reference(T, U, TQual, UQual) = common_reference!(T, U, TQual, UQual);
+
+    /// ditto
     template common_reference(T...)
     {
         alias type = common_type_t!T;
@@ -1386,7 +1298,8 @@ version(none)
         else
             static assert(false, "T isn't enum type.");
     }
-
+version(none)
+{
     ///
     template invoke_result(Fn, ArgTypes...)
     {
@@ -1401,7 +1314,7 @@ version(none)
     template unwrap_ref_decay(T)
     {
     }
-
+}
     ///
     alias type_identity_t(T) = type_identity!T.type;
 
@@ -1425,7 +1338,8 @@ version(none)
 
     ///
     alias underlying_type_t(T) = underlying_type!T.type;
-
+version(none)
+{
     ///
     alias invoke_result_t(Fn, ArgTypes...) = invoke_result!(Fn, ArgTypes).type;
 
@@ -1434,7 +1348,7 @@ version(none)
 
     ///
     alias unwrap_ref_decay_t(T) = unwrap_ref_decay!T.type;
-
+}
     ///
     alias void_t(Tp...) = void;
 
@@ -1493,10 +1407,8 @@ version(none)
     ///
     struct negation(B)
     {
-        ///
         bool_constant!(!cast(bool)B.value) temp;
 
-        ///
         alias temp this;
     }
 
@@ -1575,13 +1487,14 @@ version(none)
     deprecated("In D, volatile is a built-in function declared in core.volatile;"~
     "consequently, it always evaluates to false.")
     enum bool is_volatile_v(T) = is_volatile!T.value;
-
+version(none)
+{
     ///
     enum bool is_trivially_copyable_v(T) = is_trivially_copyable!T.value;
 
     ///
     enum bool is_standard_layout_v(T) = is_standard_layout!T.value;
-
+}
     ///
     enum bool is_empty_v(T) = is_empty!T.value;
 
@@ -1635,7 +1548,8 @@ version(none)
 
     ///
     enum bool is_move_assignable_v(T) = is_move_assignable!T.value;
-
+version(none)
+{
     ///
     enum bool is_swappable_with_v(T, U) = is_swappable_with!(T, U).value;
 
@@ -1669,7 +1583,7 @@ version(none)
 
     ///
     enum bool is_trivially_destructible_v(T) = is_trivially_destructible!T.value;
-
+}
     ///
     enum bool is_nothrow_constructible_v(T, Args...) = is_nothrow_constructible!(T, Args).value;
 
@@ -1690,22 +1604,25 @@ version(none)
 
     ///
     enum bool is_nothrow_move_assignable_v(T) = is_nothrow_move_assignable!T.value;
-
+version(none)
+{
     ///
     enum bool is_nothrow_swappable_with_v(T, U) = is_nothrow_swappable_with!(T, U).value;
 
     ///
     enum bool is_nothrow_swappable_v(T) = is_nothrow_swappable!T.value;
-
+}
     ///
     enum bool is_nothrow_destructible_v(T) = is_nothrow_destructible!T.value;
-
+    
+    version(none)
     ///
     enum bool is_implicit_lifetime_v(T) = is_implicit_lifetime!T.value;
 
     ///
     enum bool has_virtual_destructor_v(T) = has_virtual_destructor!T.value;
-
+version(none)
+{
     ///
     enum bool has_unique_object_representations_v(T) = has_unique_object_representations!T.value;
 
@@ -1714,7 +1631,7 @@ version(none)
 
     ///
     enum bool reference_converts_from_temporary_v(T, U) = reference_converts_from_temporary!(T, U).value;
-
+}
     /// [meta.unary.prop.query], type property queries
     ///
     enum size_t alignment_of_v(T) = alignment_of!T.value;
@@ -1737,7 +1654,8 @@ version(none)
 
     ///
     enum bool is_nothrow_convertible_v(From, To) = is_nothrow_convertible!(From, To).value;
-
+version(none)
+{
     ///
     enum bool is_layout_compatible_v(T, U) = is_layout_compatible!(T, U).value;
 
@@ -1756,7 +1674,7 @@ version(none)
 
     ///
     enum bool is_nothrow_invocable_r_v(R, Fn, ArgTypes...) = is_nothrow_invocable_r!(R, Fn, ArgTypes).value;
-
+}
     /// [meta.logical], logical operator traits
     ///
     enum bool conjunction_v(B...) = conjunction!B.value;
