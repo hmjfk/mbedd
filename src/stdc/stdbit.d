@@ -30,6 +30,7 @@ extern (C):
 nothrow:
 @nogc:
 @live:
+@safe:
 
 /// ditto
 enum : bool
@@ -413,6 +414,7 @@ alias stdc_rotate_right = stdc_rotate_right_ull;
 static if(is(typeof(CHAR_BIT))) // importCの対応C規格が古いため、異常を診断するかもしれない。
 static if (CHAR_BIT == 8)
 {
+@system:
     ///
     void stdc_memreverse8(size_t n, ubyte* ptr);
     /// ditto
