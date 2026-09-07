@@ -23,6 +23,7 @@
 */
 module stdc.threads;
 public import stdc.cheader.threads;
+import mdrt.coredefs: noreturn;
 
 ///
 enum ONCE_FLAG_INIT = once_flag.init;
