@@ -50,6 +50,7 @@ version (none)
 }
 
 /// all freestanding
+version(none)
 extern (C++, "std")
 {
     /// [meta.help], helper class
@@ -1190,7 +1191,7 @@ version(none)
     {
         private alias U = /* remove_reference!*/ T;
 
-        static if (is_bounded_array_v!U || is_function_v)
+        static if (is_bounded_array_v!U || is_function_v!T)
         {
             alias type = U*;
         }
@@ -1223,37 +1224,38 @@ version(none)
     }
 
     ///
+    extern(D)
     template common_type(T...)
     {
-        static if (sizeof___(T) == 1)
+        static if (T.length == 1)
         {
-            alias type = T;
+            alias type = common_type_t!(T, T);
         }
-        else static if (sizeof___(T) == 2)
+        else static if (T.length == 2)
         {
             private
             {
-                alias D1 = decay_t!T[0];
-                alias D2 = decay_t!T[1];
+                alias D1 = decay_t!(T[0]);
+                alias D2 = decay_t!(T[1]);
             }
-            
+
             static if(is_same_v!(D1, T[0]) || is_same_v!(D2,  T[1]))
             {
+                pragma(msg, "pass");
                 alias type = common_type_t!(D1, D2);
             }
-            else static if(is(decay_t!( typeof(false ? declval!D1() : declval!D2()) ) C))
+            else static if(is(decay_t!(typeof(false ? D1(): D2())) C))
             {
                 alias type = C;
             }
-            else static if(is( typeof( false ? declval!(const D1())() : declval!(const D2()) ) CF))
+            else static if(is( typeof( false ? D1() : D2() ) C))
             {
-                alias type = decay_t!CF;
+                alias type = decay_t!C;
             }
         }
         else
             alias type = common_type_t!(common_type_t!(T[0], T[1]), T[2..$]);
     }
-
 
     ///
     deprecated("In D, references aren't type qualifiers but storage classes;"~
@@ -1355,7 +1357,7 @@ version(none)
     /// [meta.logical], logical operator traits
     struct conjunction(B...)
     {
-        static if (sizeof___(B) == 0)
+        static if (B.length == 0)
         {
             true_type temp;
             alias temp this;
@@ -1364,13 +1366,13 @@ version(none)
         {
             static foreach (i; B)
             {
-                static if (i != sizeof___(B))
+                static if (i != B.length)
                 {
                     conditional_t!(cast(bool)B[i].value, B[i], B[0]) temp;
                 }
                 else
                 {
-                    B[sizeof___(B)] temp;
+                    B[B.length] temp;
                 }
             }
 
@@ -1381,7 +1383,7 @@ version(none)
     ///
     struct disjunction(B...)
     {
-        static if (sizeof___(B) == 0)
+        static if (B.length == 0)
         {
             false_type temp;
             alias temp this;
@@ -1390,13 +1392,13 @@ version(none)
         {
             static foreach (i; B)
             {
-                static if (i != sizeof___(B))
+                static if (i != B.length)
                 {
                     conditional_t!(cast(bool)B[i].value, B[0], B[i]) temp;
                 }
                 else
                 {
-                    B[sizeof___(B)] temp;
+                    B[B.length] temp;
                 }
             }
 
@@ -1698,13 +1700,14 @@ version(none)
     constexpr bool is_corresponding_member(M1 S1::*m1, M2 S2::*m2) noexcept;
     ```
     */
-
+static if(__VERSION__ > 2114L)
+{
     /// constant evaluation context
     ///
     bool is_constant_evaluated() nothrow @__ctfe => true;
     ///
     bool is_constant_evaluated() nothrow => false;
-
+}
     ///
     bool is_within_lifetime(T)(scope const(T)* p) nothrow => __traits(compiles, *p);
 } // end namespace std
