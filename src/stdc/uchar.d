@@ -21,5 +21,30 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
-module stdc.wchar_;
-public import stdc.cheader.wchar_;
+module stdc.uchar_;
+public import stdc.wchar_ : mbstate_t;
+
+extern(C):
+nothrow:
+@nogc:
+@live:
+
+///
+alias char8_t = char;
+///
+alias char16_t = wchar;
+///
+alias char32_t = dchar;
+
+///
+size_t mbrtoc8(char8_t* pc8, scope const(char*) s, size_t n, mbstate_t* ps);
+///
+size_t c8rtomb(char* s, char8_t c8, mbstate_t* ps);
+///
+size_t mbrtoc16(char16_t* pc16, scope const(char*) s, size_t n, mbstate_t* ps);
+///
+size_t c16rtomb(char* s, char16_t c16, mbstate_t* ps);
+///
+size_t mbrtoc32(char8_t* pc32, scope const(char*) s, size_t n, mbstate_t* ps);
+///
+size_t c32rtomb(char* s, char32_t c32, mbstate_t* ps);
