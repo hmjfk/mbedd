@@ -44,6 +44,7 @@ RTTIを使うため。
 ABIには影響しない上、Dが持っている既存の言語機能を使えば、C++のそれよりもはるかに高度な自己言及ができるため。
 */
 module stdcpp.support;
+import stdcpp.cstddef: size_t;
 
 @nogc:
 nothrow:

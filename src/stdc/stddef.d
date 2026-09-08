@@ -34,6 +34,9 @@ import stdc.config: nullptr;
 ///
 enum NULL = nullptr;
 
+///
+alias nullptr_t = typeof(nullptr);
+
 version(D_Ddoc)
 {
     private enum see_description;
