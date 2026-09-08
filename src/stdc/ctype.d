@@ -1,25 +1,25 @@
 /*
-    mbedd - 組み込みシステム向けのD言語標準ライブラリとDruntime
-    Copyright (C) 2025 - Denkousi
+  mbedd - 組み込みシステム向けのD言語標準ライブラリとDruntime
+  Copyright (C) 2025 - Denkousi
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-    Under Section 7 of GPL version 3, you are granted additional
-    permissions described in the GCC Runtime Library Exception, version
-    3.1, as published by the Free Software Foundation.
+  Under Section 7 of GPL version 3, you are granted additional
+  permissions described in the GCC Runtime Library Exception, version
+  3.1, as published by the Free Software Foundation.
 
-    You should have received a copy of the GNU General Public License and
-    a copy of the GCC Runtime Library Exception along with this program;
-    see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
-    <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License and
+  a copy of the GCC Runtime Library Exception along with this program;
+  see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
+  <http://www.gnu.org/licenses/>.
 */
 module stdc.ctype;
 public import stdc.locale: local_t;
@@ -31,61 +31,60 @@ extern(C):
 @trusted:
 nothrow:
 @nogc:
-pure:
 
 ///
-int   isalnum(int);
+pure int isalnum(int);
 ///
-int   isalnum_l(int, locale_t);
+int isalnum_l(int, locale_t);
 ///
-int   isalpha(int);
+pure int isalpha(int);
 ///
-int   isalpha_l(int, locale_t);
+int isalpha_l(int, locale_t);
 ///
-int   isblank(int);
+pure int isblank(int);
 ///
-int   isblank_l(int, locale_t);
+int isblank_l(int, locale_t);
 ///
-int   iscntrl(int);
+pure int iscntrl(int);
 ///
-int   iscntrl_l(int, locale_t);
+int iscntrl_l(int, locale_t);
 ///
-int   isdigit(int);
+pure int isdigit(int);
 ///
-int   isdigit_l(int, locale_t);
+int isdigit_l(int, locale_t);
 ///
-int   isgraph(int);
+pure int isgraph(int);
 ///
-int   isgraph_l(int, locale_t);
+int isgraph_l(int, locale_t);
 ///
-int   islower(int);
+pure int islower(int);
 ///
-int   islower_l(int, locale_t);
+int islower_l(int, locale_t);
 ///
-int   isprint(int);
+pure int isprint(int);
 ///
-int   isprint_l(int, locale_t);
+int isprint_l(int, locale_t);
 ///
-int   ispunct(int);
+pure int ispunct(int);
 ///
-int   ispunct_l(int, locale_t);
+int ispunct_l(int, locale_t);
 ///
-int   isspace(int);
+pure int isspace(int);
 ///
-int   isspace_l(int, locale_t);
+int isspace_l(int, locale_t);
 ///
-int   isupper(int);
+pure int isupper(int);
 ///
-int   isupper_l(int, locale_t);
+int isupper_l(int, locale_t);
 ///
-int   isxdigit(int);
+pure int isxdigit(int);
 ///
-int   isxdigit_l(int, locale_t);
+int isxdigit_l(int, locale_t);
 ///
-int   tolower(int);
+pure int tolower(int);
 ///
-int   tolower_l(int, locale_t);
+int tolower_l(int, locale_t);
 ///
-int   toupper(int);
+pure int toupper(int);
 ///
-int   toupper_l(int, locale_t);
+int toupper_l(int, locale_t);
