@@ -23,7 +23,6 @@
 */
 module stdcpp.cstddef;
 
-import core.attribute: weak;
 public import stdc.stddef;
 public import stdcpp.version_: __cpp_lib_byte;
 
@@ -33,7 +32,7 @@ D言語では、C++の場合と違って文字型のcharと1B長整数型のbyte
 */
 
 ///
-IntType to_integer(IntType)(ubyte a) nothrow @weak
+IntType to_integer(IntType)(ubyte a) nothrow
 if(__traits(isIntegral ,IntType))
 => cast(IntType)a;
 

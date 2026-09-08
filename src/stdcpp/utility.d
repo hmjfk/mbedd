@@ -37,7 +37,6 @@ version(none)
 public import stdcpp.type_traits;
 public import stdcpp.cstddef;
 import stdcpp.support;
-import core.attribute: weak;
 
 /*
 The ref here corresponds to a forwarding reference on the C++ side. 
@@ -88,7 +87,6 @@ extern(C++, "std")
 		private alias add_const_t(T) = const T;
 	
 	/// [utility.as.const], as_const
-	@weak
 	ref add_const_t!T as_const(T)(return ref T t) nothrow => t;
 	///
 	@disable void as_const(T)(const ref T);

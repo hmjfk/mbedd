@@ -23,7 +23,6 @@
 */
 module stdcpp.initializer_list;
 public import stdcpp.cstddef: size_t;
-import core.attribute: weak;
 
 
 extern (C++,"std")
@@ -53,7 +52,6 @@ extern (C++,"std")
         ///
         alias const_iterator = const(E)*;
         
-    @weak:
         ///
         version(none)
         this();
