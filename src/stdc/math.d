@@ -21,7 +21,6 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
-module stdc.math;
 /**
 <math.h>
 
@@ -30,6 +29,8 @@ License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 
 Authors:    Denkousi
 Source:     stdc/math.d
 */
+module stdc.math;
+
 public import stdc.cheader.math;
 
 public import stdc.config: c_long;
@@ -782,6 +783,24 @@ double yn(int n, double x);
 ///
 extern int signgam;
 
+version(D_Ddoc)
+{
+    ///
+    int isgreater(real_floating x, real_floating y);
+    ///
+    int isgreaterequal(real_floating x, real_floating y);
+    ///
+    int isless(real_floating x, real_floating y);
+    ///
+    int islessequal(real_floating x, real_floating y);
+    ///
+    int islessgreater(real_floating x, real_floating y);
+    ///
+    int isunordered(real_floating x, real_floating y);
+    ///
+    int iseqsig(real_floating x, real_floating y);
+}
+
 /// Standards: ISO/IEC 9899:2024 Annex H (ISO/IEC 60559 interchange and extended types)
 int totalorder(const(double*) x, const(double*) y);
 ///
@@ -813,23 +832,6 @@ int setpayloadsigf(float* res, float pl);
 ///
 int setpayloadsigl(real* res, real pl);
 
-version(D_Ddoc)
-{
-    ///
-    int isgreater(real_floating x, real_floating y);
-    ///
-    int isgreaterequal(real_floating x, real_floating y);
-    ///
-    int isless(real_floating x, real_floating y);
-    ///
-    int islessequal(real_floating x, real_floating y);
-    ///
-    int islessgreater(real_floating x, real_floating y);
-    ///
-    int isunordered(real_floating x, real_floating y);
-    ///
-    int iseqsig(real_floating x, real_floating y);
-}
 
 private
 {
@@ -843,6 +845,7 @@ private
 
 /**
 Standards: mathematical special functions for ISO/IEC 24747:2009 And for C++17 or later
+
 Many compiler are implemented is C++17. If version "usestl" is defined, C++ implementation used.
 */
 mixin(linkage ~
