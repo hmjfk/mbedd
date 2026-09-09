@@ -22,4 +22,19 @@
     <http://www.gnu.org/licenses/>.
 */
 module stdc.setjmp;
-public import stdc.cheader.setjmp;
+public import stdc.cheader.setjmp: jmp_buf, sigjmp_buf;
+public import mdrt.coredefs: noreturn;
+
+extern(C):
+nothrow:
+@nogc:
+
+///
+noreturn longjmp(jmp_buf env, int val);
+///
+noreturn siglongjmp(sigjmp_buf, int val);
+
+///
+int setjmp(jmp_buf env);
+///
+int sigsetjmp(sigjmp_buf env, int val);
