@@ -24,7 +24,8 @@
 module stdc.wchar_;
 
 public import stdc.cheader.wchar_: mbstate_t, wint_t;
-import stdc.config: c_ulong, c_long;
+public import stdc.config: c_ulong, c_long;
+
 public import stdc.stdio;
 public import stdc.locale;
 public import stdc.stdarg;

@@ -23,10 +23,12 @@
 */
 module stdc.stdlib;
 
-import mdrt.coredefs: noreturn;
 public import stdc.cheader.stdlib;
-public import stdc.config: c_long, c_ulong;
+public import stdc.stddef: NULL, size_t, wchar_t;
 public import stdc.threads: once_flag;
+
+public import stdc.config: c_long, c_ulong;
+public import mdrt.coredefs: noreturn;
 
 extern (C):
 nothrow:

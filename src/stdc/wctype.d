@@ -22,6 +22,7 @@
     <http://www.gnu.org/licenses/>.
 */
 module stdc.wctype;
+
 public import stdc.cheader.wctype: wctrans_t, wctype_t;
 public import stdc.locale: locale_t;
 

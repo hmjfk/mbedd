@@ -31,8 +31,6 @@ Standards:  ISO/IEC 9899:2024
 */
 public import stdc.cheader.stdarg;
 
-enum __STDC_VERSION_STDARG_H__ = 201710L;
-
 extern(C):
 nothrow:
 @nogc:
