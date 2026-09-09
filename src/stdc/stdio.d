@@ -32,14 +32,16 @@ module stdc.stdio;
 version(D_Ddoc)
     struct va_list{}
 else 
-    public import stdc.stdarg:va_list;
 
+public import stdc.stdarg:va_list;
 public import stdc.cheader.stdio;
 public import stdc.sys.types:off_t, ssize_t;
 import stdc.config;
 
 version(none)
+{
     import core.stdc.stdio;
+}
 
 extern (C):
 nothrow:
