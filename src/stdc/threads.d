@@ -25,13 +25,13 @@ module stdc.threads;
 public import stdc.cheader.threads;
 import mdrt.coredefs: noreturn;
 
-///
-enum ONCE_FLAG_INIT = once_flag.init;
-
+static if(!is(typeof(__STDC_NO_THREADS__)))
+{
 version(D_Ddoc)
 {
     private
     {
+
         enum see_description = null;
         alias see_below = void;
     }
@@ -45,7 +45,37 @@ version(D_Ddoc)
     alias tss_t = see_below;
     ///
     alias mtx_t = see_below;
+
+    ///
+    enum
+    {
+        ///
+        mtx_plain = see_description,
+        ///
+        mtx_recursive = see_description,
+        ///
+        mtx_timed = see_description,
+        ///
+        thrd_busy = see_description,
+        ///
+        thrd_error = see_description,
+        ///
+        thrd_nomem = see_description,
+        ///
+        thrd_success = see_description,
+        ///
+        thrd_timedout = see_description
+    }
 }
+
+///
+alias thrd_start_t = int function(void*);
+///
+alias tss_dtor_t = void* function(void*);
+
+///
+enum ONCE_FLAG_INIT = once_flag.init;
+
 ///
 void call_once(once_flag* flag, void function() func);
 ///
@@ -96,3 +126,5 @@ void tss_delete(tss_t key);
 void* tss_get(tss_t key);
 ///
 int tss_set(tss_t key, void* val);
+
+}
