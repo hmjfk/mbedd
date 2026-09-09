@@ -33,7 +33,7 @@ version(D_Ddoc)
     {
 
         enum see_description = null;
-        alias see_below = void;
+        alias see_below = int;
     }
     ///
     enum TSS_DTOR_ITERATIONS = see_description;
