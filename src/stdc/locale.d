@@ -134,7 +134,7 @@ locale_t duplocale(locale_t locobj);
 ///
 void freelocale(locale_t locobj);
 ///
-const char* getlocalename_l(int category, locale_t locobj);
+const(char*) getlocalename_l(int category, locale_t locobj);
 ///
 lconv* localeconv();
 ///
