@@ -34,6 +34,11 @@ public import stdc.stddef: NULL;
 version(none)
 import core.stdc.locale;
 
+extern (C):
+nothrow:
+@nogc:
+@live:
+
 version(D_Doc)
 {
     ///
@@ -124,3 +129,17 @@ version(D_Doc)
         LC_GLOBAL_LOCALE,
     }
 }
+///
+locale_t duplocale(locale_t locobj);
+///
+void freelocale(locale_t locobj);
+///
+const char* getlocalename_l(int category, locale_t locobj);
+///
+lconv* localeconv();
+///
+locale_t newlocale(int category_mask, scope const(char*) locale, locale_t base);
+///
+@trusted char* setlocale(int category, scope const(char*) locale);
+///
+locale_t uselocale(locale_t newloc);
