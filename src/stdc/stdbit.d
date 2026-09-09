@@ -22,9 +22,11 @@
     <http://www.gnu.org/licenses/>.
 */
 module stdc.stdbit;
-public import stdc.stdint;
-public import stdc.config: c_ulong;
-public import stdc.limits;
+
+import stdc.stdint;
+import stdc.stddef: size_t;
+import stdc.config: c_ulong;
+import stdc.limits;
 
 extern (C):
 nothrow:
