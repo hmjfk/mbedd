@@ -23,3 +23,5 @@
 */
 module stdc.errno;
 public import stdc.cheader.errno;
+
+static assert(!__traits(isTemplate, errno), "This libc implementation, errno cannot be used.");
