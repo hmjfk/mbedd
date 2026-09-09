@@ -29,13 +29,15 @@ Source:    stdc/stdio.d
 */
 module stdc.stdio;
 
+public import stdc.cheader.stdio;
+public import stdc.sys.types: off_t, ssize_t;
+public import stdc.stddef: NULL, size_t;
+
 version(D_Ddoc)
     struct va_list{}
-else 
+else
+    public import stdc.stdarg: va_list;
 
-public import stdc.stdarg:va_list;
-public import stdc.cheader.stdio;
-public import stdc.sys.types:off_t, ssize_t;
 import stdc.config;
 
 version(none)

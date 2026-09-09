@@ -24,7 +24,15 @@
 module stdc.wctype;
 public import stdc.cheader.wctype: wctrans_t, wctype_t;
 public import stdc.locale: locale_t;
-public import stdc.wchar_: wchar_t;
+
+public import stdc.ctype;
+public import stdc.stdarg;
+public import stdc.stddef;
+public import stdc.stdio;
+public import stdc.stdlib;
+public import stdc.string;
+public import stdc.time;
+public import stdc.wchar_;
 
 extern (C):
 @trusted:
