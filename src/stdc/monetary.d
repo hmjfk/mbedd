@@ -21,6 +21,25 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
-module stdc.time;
-public import stdc.cheader.time;
+/**
+Copyright:  Copyright Denkousi 2025-
+License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html, GCC RLE).
+Authors:    Denkousi
+Source:     stdc/monetary.d
+*/
+module stdc.monetary;
 
+public import stdc.sys.types: ssize_t;
+public import stdc.stddef: size_t;
+public import stdc.locale: locale_t;
+
+
+extern(C):
+nothrow:
+@nogc:
+@live:
+
+///
+ssize_t strfmon(return scope char*  s, size_t maxsize, scope const(char*) format, ...);
+///
+ssize_t strfmon_l(return scope char*  s, size_t maxsize, locale_t locale, scope const(char*) format, ...);
