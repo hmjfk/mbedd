@@ -29,8 +29,9 @@ License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 
 License:    Original is SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 License:    Original is $(HTTP www.boost.org/LICENSE_1_0.txt, Boost License 1.0).
 Authors:    Denkousi
-Authors: 	Manu Evans
-Source:     Original is $(PHOBOSSRC std/meta.d)
+Authors: 	Manu Evans, $(HTTP digitalmars.com, Walter Bright), Tomasz Stachowiak (`isExpressions`), $(HTTP erdani.org, Andrei Alexandrescu),
+            Shin Fujishiro, $(HTTP octarineparrot.com, Robert Clipsham), $(HTTP klickverbot.at, David Nadlinger), Kenji Hara, Shoichi Kato
+Source:     Original is $(PHOBOSSRC std/meta.d) and $(PHOBOSSRC std/traits.d)
 
 注意点として、D言語固有の型でこれらの総称型が具現化された場合、false_typeから派生することに注意すべきである。
 さらに、C++規格では**volatile**や参照に関する一連の総称型をこのheaderで規定しているが、
@@ -50,7 +51,6 @@ version (none)
 }
 
 /// all freestanding
-version(none)
 extern (C++, "std")
 {
     /// [meta.help], helper class
@@ -1109,7 +1109,7 @@ version(none)
     ///
     template remove_extent(T)
     {
-        static if(is(T U : U[]))
+        static if(is(T : U[I], U, typeof(0.sizeof) I))
             alias type = U;
         else 
             alias type = T;
@@ -1228,33 +1228,9 @@ version(none)
     template common_type(T...)
     {
         static if (T.length == 1)
-        {
-            alias type = common_type_t!(T, T);
-        }
-        else static if (T.length == 2)
-        {
-            private
-            {
-                alias D1 = decay_t!(T[0]);
-                alias D2 = decay_t!(T[1]);
-            }
-
-            static if(is_same_v!(D1, T[0]) || is_same_v!(D2,  T[1]))
-            {
-                pragma(msg, "pass");
-                alias type = common_type_t!(D1, D2);
-            }
-            else static if(is(decay_t!(typeof(false ? D1(): D2())) C))
-            {
-                alias type = C;
-            }
-            else static if(is( typeof( false ? D1() : D2() ) C))
-            {
-                alias type = decay_t!C;
-            }
-        }
-        else
-            alias type = common_type_t!(common_type_t!(T[0], T[1]), T[2..$]);
+            alias type = typeof(T[0].init);
+        else static if (is(typeof(true ? T[0].init : T[1].init) U))
+            alias type = common_type_t!(U, T[2 .. $]);
     }
 
     ///

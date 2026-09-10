@@ -33,7 +33,6 @@ Source:    Original is $(PHOBOSSRC std/meta.d)
 
 module stdcpp.utility;
 public import stdcpp.initializer_list;
-version(none)
 public import stdcpp.type_traits;
 public import stdcpp.cstddef;
 import stdcpp.support;
