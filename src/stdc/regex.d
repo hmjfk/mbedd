@@ -30,3 +30,86 @@ Source:
 
 module stdc.regex;
 public import stdc.cheader.regex;
+public import stdc.sys.types: size_t;
+
+extern(C):
+nothrow:
+@nogc:
+@live:
+
+version(D_Ddoc)
+{   
+    private enum unspecified = 0;
+    private enum see_description;
+    
+    ///
+    alias regoff_t = see_description; 
+    ///
+    struct regex_t
+    {
+        ///
+        size_t    re_nsub;
+    }
+
+    ///
+    struct regmatch_t
+    {
+        ///
+        regoff_t    rm_so;
+        ///
+        regoff_t    rm_eo;
+    }
+
+    enum
+    {
+        ///
+        REG_EXTENDED = unspecified,
+        ///
+        REG_ICASE = unspecified,
+        ///
+        REG_MINIMAL = unspecified,
+        ///
+        REG_NOSUB = unspecified,
+        ///
+        REG_NEWLINE = unspecified,
+        ///
+        REG_NOTBOL = unspecified,
+        ///
+        REG_NOTEOL = unspecified,
+        ///
+        REG_NOMATCH = unspecified,
+        ///
+        REG_BADPAT = unspecified,
+        ///
+        REG_ECOLLATE = unspecified,
+        ///
+        REG_ECTYPE = unspecified,
+        ///
+        REG_EESCAPE = unspecified,
+        ///
+        REG_ESUBREG = unspecified,
+        ///
+        REG_EBRACK = unspecified,
+        ///
+        REG_EPAREN = unspecified,
+        ///
+        REG_EBRACE = unspecified,
+        ///
+        REG_BADBR = unspecified,
+        ///
+        REG_ERANGE = unspecified,
+        ///
+        REG_ESPACE = unspecified,
+        ///
+        REG_BADRPT = unspecified,
+    }
+}
+
+///
+int regcomp(regex_t* preg, scope const(char*) pattern, int cflags);
+///
+size_t regerror(int errcode, const(regex_t*) preg, char* errbuf, size_t errbuf_size);
+///
+int regexec(const(regex_t*) preg, scope const(char*) string, size_t nmatch, regmatch_t pmatch, int eflags);
+///
+void regfree(regex_t* preg);
