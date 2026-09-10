@@ -39,7 +39,7 @@ nothrow:
 @nogc:
 @live:
 
-version(D_Doc)
+version(D_Ddoc)
 {
     ///
     struct lconv
