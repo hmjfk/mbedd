@@ -30,3 +30,26 @@ Source:
 
 module stdc.strings;
 public import stdc.cheader.strings;
+public import stdc.config: c_long;
+
+extern(C):
+nothrow:
+@nogc:
+@live:
+
+
+///
+int ffs(int i);
+///
+int ffsl(c_long i);
+///
+int ffsll(long i);
+
+///
+int strcasecmp(const(char*) s1, const(char*) s2);
+///
+int strcasecmp_l(const(char*) s1, const(char*) s2, locale_t);
+///
+int strncasecmp(const(char*) s1, const(char*) s2, size_t);
+///
+int strncasecmp_l(const(char*) s1, const(char*) s2, size_t, locale_t);
