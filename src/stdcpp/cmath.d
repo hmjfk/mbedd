@@ -34,7 +34,6 @@ Source:     Original is https://raw.githubusercontent.com/llvm/llvm-project/refs
 
 */
 module stdcpp.cmath;
-
 public import stdc.math;
 public import stdc.tgmath;
 public import stdc.stdlib;

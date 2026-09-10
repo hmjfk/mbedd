@@ -273,6 +273,21 @@ alias exp2 = stdc.math.exp2;
 alias exp2 = stdc.math.exp2f;
 ///
 alias exp2 = stdc.math.exp2l;
+
+///
+alias exp10 = stdc.math.exp10;
+///
+alias exp10 = stdc.math.exp10f;
+///
+alias exp10 = stdc.math.exp10l;
+
+///
+alias exp10m1 = stdc.math.exp10;
+///
+alias exp10m1 = stdc.math.exp10m1f;
+///
+alias exp10m1 = stdc.math.exp10m1l;
+
 ///
 alias exp2m1 = stdc.math.exp2m1;
 ///
@@ -628,14 +643,6 @@ alias copysign = stdc.math.copysign;
 alias copysign = stdc.math.copysignf;
 ///
 alias copysign = stdc.math.copysignl;
-
-/// mbedd extension
-///
-alias nan = stdc.math.nan;
-///
-alias nan = stdc.math.nanf;
-///
-alias nan = stdc.math.nanl;
 
 ///
 alias nextafter = stdc.math.nextafter;
