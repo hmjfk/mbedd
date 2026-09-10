@@ -202,7 +202,6 @@ extern(C++, "std")
         ///
         alias is_transparent = unspecified;
     }
-    /// [cmp.alg], comparison algorithms
     version(D_Ddoc)
     {
         mixin template strong_order(){}
@@ -212,7 +211,8 @@ extern(C++, "std")
         mixin template compare_weak_order_fallback(){}
         mixin template compare_partial_order_fallback(){}
     }
-    ///
+
+    /// [cmp.alg], comparison algorithms
     mixin strong_order;
     ///
     mixin weak_order;
