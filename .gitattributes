@@ -1,0 +1,6 @@
+* text=auto eol=lf
+
+*.c linguist-language=C
+*.h linguist-language=C
+*.d linguist-language=D
+*.di linguist-language=D
