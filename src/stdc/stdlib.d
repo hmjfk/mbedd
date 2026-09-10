@@ -220,9 +220,9 @@ void qsort_r(void* base, size_t nmemb, size_t size, int function(const(void*), c
     ///
     int abs(int j);
     ///
-    c_long labs(c_long j);
+    uint uabs(int j);
     ///
-    long llabs(long j);
+    c_long labs(c_long j);
     ///
     c_ulong ulabs(c_long j);
     ///

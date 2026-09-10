@@ -23,27 +23,10 @@
 */
 module stdcpp.cstdlib;
 
-static import stdc.tgmath;
 public import stdc.stdlib;
+public import stdcpp.cmath: abs, uabs;
 
-/// This header is overload set.
 ///
-alias abs = stdc.stdlib.abs;
-///
-alias abs = stdc.stdlib.labs;
-///
-alias abs = stdc.stdlib.llabs;
-///
-alias abs = stdc.tgmath.fabs;
-
-/// for C2y (mbedd extension)
-///
-alias abs = stdc.stdlib.uabs;
-///
-alias abs = stdc.stdlib.ulabs;
-///
-alias abs = stdc.stdlib.ullabs;
-
 alias div = stdc.stdlib.div;
 ///
 alias div = stdc.stdlib.ldiv;
