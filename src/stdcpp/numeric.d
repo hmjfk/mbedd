@@ -28,15 +28,18 @@ import stdcpp.type_traits: common_type_t;
 @nogc
 extern(C++, "std")
 {
-    ///
+    /// [numeric.ops.gcd], greatest common divisor
     common_type_t!(M, N) gcd(M, N)(M m, N n);
-    ///
+    
+    /// [numeric.ops.lcm], least common multiple
     common_type_t!(M, N) lcm(M, N)(M m, N n);
-    ///
+    
+    /// [numeric.ops.lcm], least common multiple
     T midpoint(T)(T a, T b) nothrow;
     ///
     T* midpoint(T)(T* a, T* b);
-    ///
+    
+    /// [numeric.sat], saturation arithmetic
     T add_sat(T)(T x, T y) nothrow;
     ///
     T sub_sat(T)(T x, T y) nothrow;
