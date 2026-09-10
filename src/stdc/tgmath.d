@@ -21,7 +21,7 @@ a copy of the GCC Runtime Library Exception along with this program;
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
-module src.stdc.tgmath;
+module stdc.tgmath;
 public import stdc.math;
 public import stdc.complex;
 
