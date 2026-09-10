@@ -25,8 +25,78 @@
 Copyright:  Copyright Denkousi 2025-
 License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html, GCC RLE).
 Authors:    Denkousi
-Source:     
-*/
+Standards:  IEEE Std 1003.1™-2024(POSIX.1-2024)
+Source:     stdc/search.d
 
+意外と知られていないが、POSIXには算法を扱う関数群があることに注目すべきである。そのうち、ここではhash検索、二分木、二重連結構造が実装されている。
+
+POSIX XSIに準拠している実装で使用できる。
+*/
 module stdc.search;
-public import stdc.cheader.search;
+
+public import stdc.sys.types: size_t;
+
+
+version(none)
+import stdc.stdlib;
+
+version(D_Ddoc)
+///
+struct ENTRY
+{
+    ///
+    char* key;
+    ///
+    void* data;
+}
+else public import stdc.cheader.search;
+
+///
+alias posix_tnode = void;
+
+///
+enum ACTION
+{
+    ///
+    FIND,
+    ///
+    ENTER
+};
+
+///
+enum VISIT
+{
+    ///
+    preorder,
+    ///
+    postorder,
+    ///
+    endorder,
+    ///
+    leaf
+};
+
+/// hash search table
+int hcreate(size_t nel);
+///
+void hdestroy();
+///
+ENTRY* hsearch(ENTRY item, ACTION action);
+
+/// doubly-linked lists
+void insque(return scope void* element, return scope void* pred);
+///
+void remque(return scope void* element);
+
+/// binary search tree
+void* lfind(const(void*) key, const(void*) base, size_t* nelp, size_t width, int function(const(void*), const(void*)) compar);
+///
+void* lsearch(const(void*) key, void* base, size_t* nelp, size_t width, int function(const(void*), const(void*)) compar);
+///
+void* tdelete(const(void*) key, posix_tnode** rootp, int function(const(void*), const(void*)) compar);
+///
+posix_tnode* tfind(const(void*) key, const(posix_tnode*)* rootp, int function(const(void*), const(void*)) compar);
+///
+posix_tnode* tsearch(const(void*), posix_tnode**, int function(const(void*), const(void*)) compar);
+///
+void twalk(const(posix_tnode*) root, void function(const(posix_tnode*) , VISIT, int) action);
