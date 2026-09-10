@@ -205,22 +205,7 @@ extern (C++, "std")
     ///
     struct is_function(T)
     {
-        bool_constant!(
-        (){
-            static if(is(typeof(&X) U : U*) && is(U == function))
-            {
-                // x is a (nested) function symbol.
-                return true;
-            }
-            else static if(is(X T))
-            {
-                // x is a type.  Take the type of it and examine.
-                return is(T == function);
-            }
-            else
-                return false;
-        }()
-        ) temp;
+        bool_constant!(is(T == function)) temp;
 
         alias temp this;
     }
