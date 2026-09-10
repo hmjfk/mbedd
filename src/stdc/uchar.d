@@ -23,6 +23,7 @@
 */
 module stdc.uchar_;
 public import stdc.wchar_ : mbstate_t;
+public import stdc.stddef: size_t;
 
 extern(C):
 nothrow:
