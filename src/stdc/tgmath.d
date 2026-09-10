@@ -22,8 +22,8 @@ a copy of the GCC Runtime Library Exception along with this program;
     <http://www.gnu.org/licenses/>.
 */
 module src.stdc.tgmath;
-static import stdc.math;
-static import stdc.complex;
+public import stdc.math;
+public import stdc.complex;
 
 /++
 <tgmath.h>
