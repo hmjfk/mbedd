@@ -27,7 +27,7 @@ mbeddは、第一に組み込み向けである。そのため、実行記録体
                 - ~~Invariants should use the expression-based syntax when the equivalent long-form syntax would have a single assert statement. Put a space between invariant and the opening parentheses~~:
     3.  英語による説明文書の書き方は[ASD-STE100](https://www.asd-ste100.org/assets/files/ASD-STE100_ISSUE9.pdf)に従う。
     4. 設計及び実装にあたっては、Unix哲学の諸原則に従うこと。作業に着手する前に、その作業と諸原則を照らし合わせて自分を問いただすべきである。
-    5. LLMを含むすべての人工知能の使用については、[LLMの適正用途について](https://gist.github.com/hmjfk/d54a2308a68093863ef7462f380157ff)をよく読んだ上で、原理的に結果の参照透過性が保証できると証明された用途に限って用いること。当然、人工知能が不自由な利用許諾であったり、[SaaSS](https://www.gnu.org/philosophy/who-does-that-server-really-serve.ja.html)であったりするものは使用してはならない。
+    5. LLMを含むすべての人工知能の使用については、[LLMの適正用途について](https://gist.github.com/hmjfk/d54a2308a68093863ef7462f380157ff)をよく読んだ上で、結果の参照不透過性が問題とならない用途に限って用いること。当然、人工知能が不自由な利用許諾であったり、[SaaSS](https://www.gnu.org/philosophy/who-does-that-server-really-serve.ja.html)であったりするものは使用してはならない。
 4. 命名規則は単語省略記法やcamel法でも構わないが、一つの機能群や処理のまとまりごとにできるだけ統一すること。たとえば、文字列を表示する関数群や集成体、moduleを単位にするとよい。また、3つ以上の単語を連結したsnake法は使用しないこと。文字数上限は概ね10文字程度とする。
     > [!NOTE]
     > これらの命名規則は、宗教論争になりがちなので統一感を損ねない程度で実装者の好みに任せることにした。また、頭文字を単語として用いる場合は、文字の大小を変更しないほうが見やすいことがある。参考までに、C言語の標準部品集やPOSIXでは、古くから母音省略形、短縮形の単語省略記法が用いられている。単語の省略形は[Acronym Finder](https://www.acronymfinder.com/)で検索すれば簡単に見つかる。
