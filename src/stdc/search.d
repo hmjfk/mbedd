@@ -36,9 +36,10 @@ module stdc.search;
 
 public import stdc.sys.types: size_t;
 
-
-version(none)
-import stdc.stdlib;
+extern (C):
+nothrow:
+@nogc:
+@live:
 
 version(D_Ddoc)
 ///
