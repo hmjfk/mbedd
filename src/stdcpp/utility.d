@@ -76,10 +76,9 @@ extern(C++, "std")
 	extern(D)
 	ref T move(T)(return ref T x) __rvalue nothrow => x; /// since D111.0
 
-	version(none)
 	///
 	ref conditional_t!(!is_nothrow_move_constructible_v!T && is_copy_constructible_v!T, const T, T)
-	move_if_noexcept(ref T x) nothrow => move(x);
+	move_if_noexcept(T)(ref T x) nothrow => move(x);
 
 	// add_const_tの仮実装
 	static if(!is(typeof(add_const_t)))
@@ -240,13 +239,12 @@ extern(C++, "std")
 	enum cw(alias X) = constant_wrapper!X();
 
 	/// compile-time integer sequences
-	struct integer_sequence(T, I...) 
-	if(is(Repeat!(I.length - 1, T) == I))
+	struct integer_sequence(T, I...)
 	{
 		alias value_type = T;
 		static size_t size() nothrow
 		{
-			return sizeof___(I);
+			return I.length;
 		}
 	}
 
@@ -276,7 +274,7 @@ extern(C++, "std")
 	alias make_index_sequence(size_t N) = make_integer_sequence!(size_t, N);
 
 	///
-    alias index_sequence_for(T...) = make_index_sequence!sizeof___(T);
+    alias index_sequence_for(T...) = make_index_sequence!(T.length);
 
  	/// [intseq.binding], structured binding support
 	static if(is(typeof(integral_constant)))
@@ -307,7 +305,7 @@ extern(C++, "std")
 	///
 	struct tuple_size(T, Values...)
 	if(is(Repeat!(Values.length - 1u, T) == Values))
-	{ enum tuple_size = integral_constant!(size_t, sizeof___(Values))(); }
+	{ enum tuple_size = integral_constant!(size_t, Values.length)(); }
 
   	///
 	struct tuple_element(size_t I, T:integer_sequence!(T, Values), Values...) 
@@ -320,12 +318,12 @@ extern(C++, "std")
   	{ alias type = T; };
 
 	T get(size_t I, T, Values...)(integer_sequence!(T, Values)) @__ctfe
-	if(I < sizeof___(Values))
+	if(I < Values.length)
 	=> values[I];
 	
 	///
 	T get(size_t I, T, Values...)(integer_sequence!(T, Values))
-	if(I < sizeof___(Values));
+	if(I < Values.length);
 
 	/// class template pair
 	extern (C++,struct)

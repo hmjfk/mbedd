@@ -25,9 +25,7 @@
 C++の言語機能移植と内部用部品
 
 References:
- Based on ideas in Table 3.1 from
- $(LINK2 http://amazon.com/exec/obidos/ASIN/0201704315/ref=ase_classicempire/102-2957199-2585768,
-     Modern C++ Design),
+ Based on ideas in Table 3.1 from Modern C++ Design,
   Andrei Alexandrescu (Addison-Wesley Professional, 2001)
 Copyright: Copyright The D Language Foundation 2005 - 2015, Denkousi 2026-.
 License:   $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE). Original is $(HTTP www.boost.org/LICENSE_1_0.txt, Boost License 1.0).
@@ -85,7 +83,6 @@ template <class T, T... I>は、
 ```
 は、
 ---
- if(is(Repeat!(I.length, T) == I))
 ---
 にする。
 */
