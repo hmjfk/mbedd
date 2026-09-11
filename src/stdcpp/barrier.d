@@ -27,6 +27,7 @@ import stdcpp.config: importStdlib;
 
 mixin importStdlib;
 
+extern(C++, "std")
 struct barrier(CompletionFunction)
 {
 public:
