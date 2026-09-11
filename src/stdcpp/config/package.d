@@ -22,9 +22,7 @@
     <http://www.gnu.org/licenses/>.
 */
 module stdcpp.config;
-public import stdc.config;
 import stdcpp.support;
-
 
 /**
  * Returns the target C++ version, encoded as C++ compilers do
@@ -76,3 +74,17 @@ version(CppRuntime_LLVM)
 }
 else
     enum stdNamespace = Alias!"std";
+
+/// stdcpp.config.stdlib import macro
+/// switch used stdlib module.
+package(stdcpp)
+mixin template importStdlib()
+{
+    version(D_Ddoc) {} else
+    {
+        static if(__traits(compiles, (){ import stdcpp.config.stdlib.additional; }))
+            import detail = stdcpp.config.stdlib.additional;
+        else
+            import detail = stdcpp.config.stdlib;
+    }
+}
