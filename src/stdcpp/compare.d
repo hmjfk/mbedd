@@ -26,15 +26,12 @@ Copyright:  Copyright Denkousi 2025-
 License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE).
 Authors:    Denkousi
 Source:     stdcpp/compare.d
-
-このheaderを使用するには、module stdcpp.config.stdlibの場所を明示的に指定する必要がある。
-そうしないと、取り込みに失敗する。
 */
 
 module stdcpp.compare;
+import stdcpp.config:importStdlib;
 
-version(D_Ddoc){} else
-import stdcpp.config.stdlib;
+mixin importStdlib;
 
 @live
 @nogc
