@@ -27,9 +27,9 @@ D言語用C標準部品集
 Copyright: Copyright Denkousi 
 License:   $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE)
 Source:    stdc/package.d
-Standards: ISO/IEC 9899:2024, IEEE Std 1003.1™-2024(POSIX.1-2024)
+Standards: ISO/IEC 9899:2024, IEEE Std 1003.1™:2024(POSIX.2024)
 
-mbeddでは、各実装の部品集を直接呼び出せるようにすることを目的としている。
+mbeddは、各実装の部品集を直接呼び出せるようにすることを目的としている。
 将来的には、CTFE専用実装も提供予定である。
 
 このmoduleを取り込むと、すべての標準C部品集が利用できる。
@@ -45,19 +45,32 @@ druntimeのlibc実装は、全てD言語で移植しようとしているため�
 この問題を単純に解決した。こうすることで、C言語と全く同じ環境を再現しやすくなるのだ。
 このため、本部品集からlibcの関数を使うためには対応するheaderの存在が必須である。
 
-## 対応規格
+# 使用方法
+実装依存の識別子は、すべてImportCを使って取り込んでいる。このため、Dの処理系が前処理器を呼ぶ際に次の引数を与えること。
+- include path
+- C標準の種類(C17, C23など)
+
+## 任意のversion識別子
+### usestl
+通常、C言語標準部品集の実装は実行環境に合わせて自動的に選択されるが、一部の関数はC++STLでも実装されているものがある。
+その場合、既定ではC言語の実装が提供されるが、C++実装を使う必要があるときは、このversion識別子を有効にする。
+ただし、C側でmacroとして実装されるものは、そのmacroが簡素なものでないかぎりこの識別子に関係なくD言語の実装が使用される。
+
+# 対応規格
 すべて最新規格に合わせるよう実装されている。規格改訂案が公表され次第、部品集も随時更新される。
 したがって、規格の下位互換性はほとんど考慮されていないことに注意を要する。
-#### ISO/IEC 9899:2024 (C23)
+
+C言語標準
+## ISO/IEC 9899:2024 (C23)
 以下の拡張にも対応する予定。
 - 附属書F, Gのうち、D言語側で部品集として対応可能な部分
 - 附属書K
-#### ISO/IEC TS 18661-4:2025
+## ISO/IEC TS 18661-4:2025
 D言語側で部品集として対応可能な部分だけを実装している。
-#### ISO/IEC TR 24731-2:2010
-####  ISO/IEC 9945:2024, IEEE 1003.1-2024 (POSIX.1)
+## ISO/IEC TR 24731-2:2010
+##  ISO/IEC 9945:2024, IEEE 1003.1-2024 (POSIX.1)
 XSIにも対応予定
-#### UNIX SUS (UNIX規格)
+## UNIX SUS (UNIX規格)
 任意実装となっているRBACにも対応する予定。
 */
 public import stdc.augarith;
@@ -70,7 +83,6 @@ public import stdc.inttypes;
 public import stdc.locale;
 public import stdc.math;
 public import stdc.signal;
-version(none)
 public import stdc.stdarg;
 public import stdc.stdatomic;
 public import stdc.stdbit;
