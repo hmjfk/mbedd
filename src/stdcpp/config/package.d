@@ -79,6 +79,8 @@ version(CppRuntime_LLVM)
         enum LIBCPP_ABI_VERSION = "__2";
     else version(LIBCXX_ABI_VERSION_v3)
         enum LIBCPP_ABI_VERSION = "__3";
+    else 
+        enum LIBCPP_ABI_VERSION = "__1";
 
     enum stdNamespace = Aliases!("std", LIBCPP_ABI_VERSION);
 }
