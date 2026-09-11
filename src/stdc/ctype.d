@@ -22,7 +22,7 @@
     <http://www.gnu.org/licenses/>.
 */
 module stdc.ctype;
-public import stdc.locale: local_t;
+public import stdc.locale: locale_t;
 
 version(none)
 import core.stdc.ctype;
