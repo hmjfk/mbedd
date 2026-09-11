@@ -752,39 +752,27 @@ version(none)
         alias temp this;
     }
 
-    ///
-    version(none)
+    /// Bug: When T[N][], result is 0.
     struct extent(T, uint I = 0)
-    if (is_array_v!T)
     {
-        /*
-        extentの本体実装。
-        Bug: 次元数が仕様とは逆順になってしまう。
-        */
         private
-        template countExtent(T, uint i, indexs...)
         {
-            static if(I == 0)
-                enum countExtent = indexs[I + 1]; // indexsの先頭要素は常に0が入るため、除外する。 
-            else
+            static if (I == 0)
             {
-                debug pragma(msg, indexs);
-
-                // 次元数取り出し
-                static if(is(T U : U[N], size_t N))
-                    enum index = N;
-                else
-                    enum index = 0;
-                
-                // 次元を次に進める。現在の次元を消去。
-                static if (is(T Un : Un[]))
-                                                               // indexとindexsを逆にすると、次元の並びが逆順になる。
-                    alias countExtent = countExtent!(Un, i - 1, index, indexs); 
-                
+                static if(is(T U == U[N], size_t N))
+                    enum v = N;
+                else 
+                    enum v = 0;
             }
+            else static if(rank_v!T < I)
+                enum v = 0; 
+            else static if(is(T U == U[N], size_t N))
+                enum v = extent!(U, I - 1).v;
+            else
+                enum v = 0;
         }
 
-        integral_constant!(size_t, countExtent!(T, I)) temp;
+        integral_constant!(size_t, v) temp;
         alias temp this;
     }
 
@@ -1094,6 +1082,7 @@ version(none)
     ///
     template remove_extent(T)
     {
+
         static if(is(T : U[I], U, typeof(0.sizeof) I))
             alias type = U;
         else 
