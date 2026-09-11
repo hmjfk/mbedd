@@ -25,7 +25,7 @@ module stdcpp.barrier;
 import stdcpp.cstddef: ptrdiff_t;
 import stdcpp.config: importStdlib;
 
-mixin importStdlib;
+mixin importStdlibR;
 
 extern(C++, "std")
 struct barrier(CompletionFunction)

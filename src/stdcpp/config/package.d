@@ -78,7 +78,7 @@ else
 /// stdcpp.config.stdlib import macro
 /// switch used stdlib module.
 package(stdcpp)
-mixin template importStdlib()
+mixin template importStdlibR()
 {
     version(D_Ddoc) {} else
     {
@@ -86,5 +86,16 @@ mixin template importStdlib()
             import detail = stdcpp.config.stdlib.additional;
         else
             import detail = stdcpp.config.stdlib;
+    }
+}
+
+mixin template importStdlib()
+{
+    version(D_Ddoc) {} else
+    {
+        static if(__traits(compiles, (){ import stdcpp.config.stdlib.additional; }))
+            import stdcpp.config.stdlib.additional;
+        else
+            import stdcpp.config.stdlib;
     }
 }
