@@ -24,35 +24,38 @@
 /**
 Copyright:  Copyright Denkousi 2025-
 Copyright: 	Copyright The D Language Foundation 2005 - 2015
-Copyright:  Microsoft Corporation.
-License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE).
-License:    Original is SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
-License:    Original is $(HTTP www.boost.org/LICENSE_1_0.txt, Boost License 1.0).
+Copyright:  Microsoft Corporation
+License:    $(LINK2 https://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE).
+License:    Original is Apache-2.0 WITH LLVM-exception
+License:    Original is $(LINK2 http://www.boost.org/LICENSE_1_0.txt, Boost License 1.0).
 Authors:    Denkousi
-Authors: 	Manu Evans, $(HTTP digitalmars.com, Walter Bright), Tomasz Stachowiak (`isExpressions`), $(HTTP erdani.org, Andrei Alexandrescu),
-            Shin Fujishiro, $(HTTP octarineparrot.com, Robert Clipsham), $(HTTP klickverbot.at, David Nadlinger), Kenji Hara, Shoichi Kato
-Source:     Original is $(PHOBOSSRC std/meta.d) and $(PHOBOSSRC std/traits.d)
+Authors: 	Manu Evans, $(LINK2 https://digitalmars.com, Walter Bright), Tomasz Stachowiak (`isExpressions`), $(LINK2 https://erdani.org, Andrei Alexandrescu),
+            Shin Fujishiro, $(LINK2 https://octarineparrot.com, Robert Clipsham), $(LINK2 https://klickverbot.at, David Nadlinger), Kenji Hara, Shoichi Kato
+Source:     stdcpp/type_traits.d
+Source:     Original is Phobos in std/meta.d and std/traits.d
+Standards:  ISO/IEC 14882:2026 (C++26)
 
 注意点として、D言語固有の型でこれらの総称型が具現化された場合、false_typeから派生することに注意すべきである。
 さらに、C++規格では**volatile**や参照に関する一連の総称型をこのheaderで規定しているが、
 D言語側からすると、これらは型の一部ではなく意味をなさないため実装されていない。互換性のために識別子だけが定義されている。
 */
+/// all freestanding
 module stdcpp.type_traits;
 
 import stdc.uchar;
 import stdcpp.cstddef : wchar_t, nullptr_t;
 import std = stdcpp.utility;
 import stdcpp.support;
-
 version (none)
 {
     // for Editer refarence.
     import core.stdcpp.type_traits;
+    import std.traits;    
 }
 
-/// all freestanding
 extern (C++, "std")
 {
+
     /// [meta.help], helper class
     extern(D)
     struct integral_constant(T, T v)
@@ -138,7 +141,7 @@ extern (C++, "std")
     }
 
     /**
-    # 規格からの変更点
+    ## 規格からの変更点
     D言語における参照は型ではなく記憶域区間指定子になっているため、is_referenceの別名となっている。
     */
     alias is_lvalue_reference(alias T) = is_reference!T;
@@ -150,7 +153,7 @@ extern (C++, "std")
 
 
     /**
-    # 規格からの変更点
+    ## 規格からの変更点
     D言語では要素指示型が存在せず、通常の要素かのように読み書きできるため、常にfalse_typeから派生する。
     */
     deprecated("D does not have member pointer types.")
@@ -172,7 +175,7 @@ extern (C++, "std")
     }
     
     /**
-    # 規格からの変更点
+    ## 規格からの変更点
     D言語では、列挙型は有効範囲付き列挙型に等しいため、is_scoped_enumの別名となっている。
     */
     alias is_enum(T) = is_scoped_enum!T;
@@ -210,7 +213,7 @@ extern (C++, "std")
         alias temp this;
     }
     /**
-    # 規格からの変更点
+    ## 規格からの変更点
     `std​::​meta​::​info`はD言語側から不可視の型であるため、常にfalse_typeから派生する。
     */
     deprecated("D does not have C++ std​::​meta​::​info.")
@@ -285,7 +288,7 @@ extern (C++, "std")
     }
 
     /**
-    # 規格からの変更点
+    ## 規格からの変更点
     D言語では要素指示型が存在せず、通常の要素かのように読み書きできるため、常にfalse_typeから派生する。
     */
     deprecated("D does not have member pointer types.")
@@ -304,7 +307,7 @@ extern (C++, "std")
     }
 
     /**
-    # 規格からの変更点
+    ## 規格からの変更点
     D言語における発揮性操作は型修飾子ではなく言語の組込関数で表すため、常にfalse_typeから派生する。
     */
     deprecated("In D, volatile is a built-in function declared in core.volatile;"~
@@ -463,7 +466,7 @@ extern (C++, "std")
         alias temp this;
     }
     /**
-    # 規格からの変更点
+    ## 規格からの変更点
     D言語では、要素数不明配列は指示型に等しいため、is_pointerの別名となっている。
     */
     ///
@@ -876,7 +879,7 @@ version(none)
         }
     }
     /**
-    # 規格からの変更点
+    ## 規格からの変更点
     D言語における発揮性操作は型修飾子ではなく言語の組込関数で表すため、常にTを返す。
     */
     ///
@@ -888,7 +891,7 @@ version(none)
     }
 
     /**
-    # 規格からの変更点
+    ## 規格からの変更点
     D言語における発揮性操作は型修飾子ではなく言語の組込関数で表すため、remove_constの別名となっている。
     */
     deprecated(
@@ -909,7 +912,7 @@ version(none)
     }
 
     /**
-    # 規格からの変更点
+    ## 規格からの変更点
     remove_volatileと同様な変更がある。
     */
     deprecated(
@@ -920,7 +923,7 @@ version(none)
     }
 
     /**
-    # 規格からの変更点
+    ## 規格からの変更点
     remove_volatileと同様な変更がある。
     */
     deprecated(
@@ -932,7 +935,7 @@ version(none)
 
     ///
     /**
-    # 規格からの変更点
+    ## 規格からの変更点
     remove_volatileと同様な変更がある。
     */
     deprecated(
@@ -948,7 +951,7 @@ version(none)
     alias add_const_t(T) = add_const!T.type;
 
     /**
-    # 規格からの変更点
+    ## 規格からの変更点
     remove_volatileと同様な変更がある。
     */
     deprecated(
@@ -965,7 +968,7 @@ version(none)
         "In D, references are not type qualifiers but storage classes; therefore, they have no effect.")
     {
         /**
-        # 規格からの変更点
+        ## 規格からの変更点
         D言語における参照は型ではなく記憶域区間指定子になっているため、常にTを返す。
         */
         struct remove_reference(T)

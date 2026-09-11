@@ -43,12 +43,12 @@ Copyright:  2023 Justine Alexandra Roberts Tunney
 Copyright: 	Copyright The D Language Foundation 2005 - 2015
 License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html, GCC RLE).
 License:    Original is $(LINK2 https://raw.githubusercontent.com/jart/jtckdint/refs/heads/master/LICENSE.txt, ISC License).
-License:    Original is $(HTTP www.boost.org/LICENSE_1_0.txt, Boost License 1.0).
+License:    Original is $(LINK2 www.boost.org/LICENSE_1_0.txt, Boost License 1.0).
 Authors:    Denkousi
 Authors: 	Manu Evans
 Source:     stdc/stdckdint.d
-Source:     Original is $(PHOBOSSRC std/traits.d)
-Standards:  ISO/IEC 9899:2024
+Source:     Original is std/traits.d
+Standards:  ISO/IEC 9899:2024(C23)
 
 本部品集では、移植性を確保するためにC++側の宣言を採用することとし、実装も提供している。これは、C側で組み込み関数の形態をとるためである。
 */
