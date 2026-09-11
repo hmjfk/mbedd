@@ -326,7 +326,9 @@ extern(C++, "std")
 	if(I < Values.length);
 
 	/// class template pair
-	extern (C++,struct)
+	version(none)
+{
+	extern (C++, struct)
 	struct pair(T1, T2)
 	{
 		///
@@ -415,11 +417,12 @@ extern(C++, "std")
 	
 	version(none)
 	pair!(unwrap_ref_decay_t!T1, unwrap_ref_decay_t!T2) make_pair(ref T1, ref T2);
-
+}
 	/// tuple-like access to pair
 	struct tuple_element(size_t I, T);
 	///
-	version(none)
+version(none)
+{
 	struct tuple_size(T1 : pair!(T1, T2), T2)
 	{
 		integral_constant!(size_t, 2) temp;
@@ -450,7 +453,7 @@ extern(C++, "std")
 	ref T2 get(T2, T1)(ref pair!(T1, T2) p) nothrow;
 	///
 	const ref T2 get(T2, T1)(const ref pair!(T1, T2) p) nothrow;
-
+}
 	/// pair piecewise construction
 	struct piecewise_construct_t
 	{
