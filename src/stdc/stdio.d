@@ -34,7 +34,7 @@ public import stdc.sys.types: off_t, ssize_t;
 public import stdc.stddef: NULL, size_t;
 
 version(D_Ddoc)
-    struct va_list{}
+    private struct va_list{}
 else
     public import stdc.stdarg: va_list;
 

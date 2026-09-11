@@ -37,6 +37,10 @@ version(none)
 {
     import core.stdc.wchar_;
 }
+version(D_Ddoc)
+{
+    private struct va_list {}
+}
 
 extern(C):
 nothrow:

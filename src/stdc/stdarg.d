@@ -37,7 +37,7 @@ nothrow:
 
 version(D_Ddoc)
 {
-    private enum unspecified;
+    private struct unspecified{};
     ///
     alias va_list = unspecified;
 }

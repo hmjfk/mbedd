@@ -28,8 +28,8 @@ version(D_Ddoc)
 
     private
     {
-        enum signed_integer_type;
-        enum unsigned_integer_type;
+        struct signed_integer_type{};
+        struct unsigned_integer_type{};
         enum see_below;
     }
 
