@@ -23,7 +23,7 @@
 */
 module stdcpp.barrier;
 import stdcpp.cstddef: ptrdiff_t;
-import stdcpp.config: importStdlib;
+import stdcpp.config: importStdlibR;
 
 mixin importStdlibR;
 
