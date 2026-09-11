@@ -35,16 +35,6 @@ import stdcpp.support;
  */
 enum __cplusplus = __traits(getTargetInfo, "cppStd");
 
-/// mangling rule categoly
-version(CppRuntime_GNU)
-    enum ItaniumCppMangle;
-else version(CppRuntime_LLVM)
-    enum ItaniumCppMangle;
-else version(CppRuntime_DigitalMars)
-    enum VSMCCppMangle;
-else version(CppRuntime_Microsoft)
-    enum VSMCCppMangle;
-
 /**
 libc++ ABI version
 See_Also: https://libcxx.llvm.org//DesignDocs/ABIVersioning.html
