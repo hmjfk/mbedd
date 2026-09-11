@@ -21,12 +21,20 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
+/**
+Copyright:  Copyright Denkousi 2025-
+License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE).
+Authors:    Denkousi
+Standards:  ISO/IEC 14882:2026 (C++26)
+Source:     stdcpp/latch.d
+*/
 module stdcpp.latch;
 import stdcpp.cstddef: ptrdiff_t;
 import stdcpp.config: importStdlibR;
 
 mixin importStdlibR;
 
+///
 extern(C++, "std")
 struct latch
 {
