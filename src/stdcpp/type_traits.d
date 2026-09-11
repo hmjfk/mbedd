@@ -734,7 +734,7 @@ version(none)
     struct alignment_of(T)
     {
         integral_constant!(size_t, T.alignof) temp;
-        alias temp = this;
+        alias temp  this;
     }
 
     ///
