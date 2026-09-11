@@ -42,7 +42,7 @@ version(D_Ddoc)
     private enum see_description;
     
     alias size_t = typeof(0.sizeof);
-    alias ptrdiff_t = typeof(typeof(cast(void*)0 - cast(void*)0));
+    alias ptrdiff_t = typeof(cast(void*)0 - cast(void*)0);
     alias wchar_t = see_description;
 }
 
