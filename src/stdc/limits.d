@@ -21,5 +21,23 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
+/**
+Copyright:  Copyright Denkousi 2025-
+License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE).
+Authors:    Denkousi
+Standards:  ISO/IEC 9899:2029 (C29)
+Source:     stdc/limits.d
+
+このheaderで定義される処理系限界と型特性は、ImportC用ではない。
+その特性はImportCで使用される前処理器のinclude pathに依存することに注意すべきである。
+
+他の処理系と連携させるときは、その処理系が用いるinclude pathに合わせること。
+*/
 module stdc.limits;
+
 public import stdc.cheader.limits;
+
+version(none)
+{
+    import core.stdc.limits;
+}

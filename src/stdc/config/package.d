@@ -33,6 +33,12 @@ public import mdrt.coredefs: string;
 
 // Darwin系列のOSかどうか調べるversion識別子は、Appleを使用する。
 
+/*
+TODD
+1. sizeofと符号の有無に応じて整数型を作る`template makeint_t`(size_t, bool sign)をここに作る。
+2. stdc.limitsとstdc.stdintの型特性定数とmakeint_tを使って処理系定義の整数型を再現する。(c_long, c_ulong, int_least8_tなど)
+*/
+
 ///
 enum nullptr = null;
 

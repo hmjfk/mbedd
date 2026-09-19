@@ -21,7 +21,52 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
+/**
+Copyright:  Copyright Denkousi 2025-
+License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE).
+Authors:    Denkousi
+Standards:  ISO/IEC 9899:2029 (C29)
+Source:     stdc/stdint.d
+
+このheaderで定義される処理系限界と型特性は、ImportC用ではない。
+その特性はImportCで使用される前処理器のinclude pathに依存することに注意すべきである。
+
+他の処理系と連携させるときは、その処理系が用いるinclude pathに合わせること。
+*/
 module stdc.stdint;
+
+
+version(none)
+{
+    import core.stdc.stdint;
+}
+
+/// optional
+alias int8_t = byte;
+/// ditto
+alias int16_t = short;
+/// ditto
+alias int32_t = int;
+/// ditto
+alias int64_t = long;
+
+version(D_Ddoc)
+/// ditto 
+alias intN_t = see_below;
+
+/// optional
+alias uint8_t = ubyte;
+/// ditto
+alias uint16_t = ushort;
+/// ditto
+alias uint32_t = uint;
+/// ditto
+alias uint64_t = ulong;
+
+version(D_Ddoc)
+/// ditto
+alias uintN_t = see_below;
+
 
 version(D_Ddoc)
 {
@@ -32,28 +77,6 @@ version(D_Ddoc)
         struct unsigned_integer_type{};
         enum see_below;
     }
-
-    /// optional
-    alias int8_t = signed_integer_type;
-    /// ditto
-    alias int16_t = signed_integer_type;
-    /// ditto
-    alias int32_t = signed_integer_type;
-    /// ditto
-    alias int64_t = signed_integer_type;
-    /// ditto 
-    alias intN_t = see_below;
-
-    /// optional
-    alias uint8_t = unsigned_integer_type;
-    /// ditto
-    alias uint16_t = unsigned_integer_type;
-    /// ditto
-    alias uint32_t = unsigned_integer_type;
-    /// ditto
-    alias uint64_t = unsigned_integer_type;
-    /// ditto 
-    alias uintN_t = see_below;
 
     ///
     alias  int_least8_t = signed_integer_type;
