@@ -23,8 +23,8 @@
 */
 /**
 <float.h>
-Copyright:  Copyright The D Language Foundation 2000 - 2011.
 Copyright:  Copyright Denkousi 2025-
+Copyright:  Copyright The D Language Foundation 2000 - 2011.
 License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE).
 License:    Original is $(LINK2 http://www.boost.org/LICENSE_1_0.txt, Boost Software License 1.0). 
 Authors:    $(HTTP digitalmars.com, Walter Bright), Don Clugston,
@@ -45,4 +45,4 @@ enum LDBL_SNAN  = real.nan;
 ///
 enum INFINITY = float.infinity;
 ///
-enum float NAN = ()pure{ ulong v = 0x7FF0_0000_0000_0001; return *cast(double*) &v; }();
+enum float NAN = ()pure { uint v = 0x7FC0_0000; return *cast(float*) &v; }();
