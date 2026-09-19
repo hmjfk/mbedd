@@ -30,11 +30,16 @@ nothrow:
 @nogc:
 @live:
 
-///
+
+/**
+## 規格からの変更点
+D言語では、C++と同様に文字専用の型が存在するため、
+その型を別名としている。
+*/
 alias char8_t = char;
-///
+/// ditto
 alias char16_t = wchar;
-///
+/// ditto
 alias char32_t = dchar;
 
 ///
@@ -46,6 +51,6 @@ size_t mbrtoc16(char16_t* pc16, scope const(char*) s, size_t n, mbstate_t* ps);
 ///
 size_t c16rtomb(char* s, char16_t c16, mbstate_t* ps);
 ///
-size_t mbrtoc32(char8_t* pc32, scope const(char*) s, size_t n, mbstate_t* ps);
+size_t mbrtoc32(char32_t* pc32, scope const(char*) s, size_t n, mbstate_t* ps);
 ///
 size_t c32rtomb(char* s, char32_t c32, mbstate_t* ps);
