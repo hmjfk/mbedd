@@ -24,4 +24,18 @@
 module stdc.errno;
 public import stdc.cheader.errno;
 
-static assert(!__traits(isTemplate, errno), "This libc implementation, errno cannot be used.");
+version(none)
+{
+    import core.stdc.errno;
+}
+static if(__traits(isTemplate, errno))
+pragma(msg, "Warning: This libc implementation, errno cannot be used."~
+            "Use the getErrno, setErrno function instead.");
+
+version(D_Ddoc)
+{
+    ///
+    int getErrno();
+    ///
+    int setErrno( int val );
+}
