@@ -21,7 +21,7 @@
     see the files LICENSE and LICENSE.RUNTIME respectively.  If not, see
     <http://www.gnu.org/licenses/>.
 */
-module stdc.uchar_;
+module stdc.uchar;
 public import stdc.wchar_ : mbstate_t;
 public import stdc.stddef: size_t;
 
