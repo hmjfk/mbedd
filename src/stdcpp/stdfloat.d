@@ -33,7 +33,7 @@ alias float32_t = float;
 ///
 alias float64_t = double;
 
-static if(real.sizeof * 8 == 128)
+static if(real.sizeof * 8 == 128 && real.mant_dig == 113)
 {
     ///
     enum __STDCPP_FLOAT128_T__;
