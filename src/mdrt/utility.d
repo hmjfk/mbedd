@@ -22,12 +22,17 @@
     <http://www.gnu.org/licenses/>.
 */
 /**
-Copyright: Copyright Digital Mars 2000 - 2011, Denkousi 2026 -
-License:   $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE). Original is $(HTTP www.boost.org/LICENSE_1_0.txt, Boost License 1.0).
-Authors:   Walter Bright, Sean Kelly, Denkousi
+Copyright: Denkousi 2026 -
+Copyright: Copyright Digital Mars 2000 - 2011,
+License:   $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html,  GCC RLE).
+License:   Original is $(LINK2 http://www.boost.org/LICENSE_1_0.txt, Boost Software License 1.0).
+Authors:   Denkousi
+Authors:   Walter Bright, Sean Kelly
 */
+
 module mdrt.utility;
-public import mdrt.coredefs;
+import mdrt.coredefs;
+import stdc.stddef;
 
 @nogc:
 nothrow:
@@ -39,11 +44,33 @@ template imported(string moduleName)
     mixin("import imported = " ~ moduleName ~ ";");
 }
 
-// hashOf
-// 本来のobject.hashOfと全く同じ関数
-size_t hashOf(T)(auto ref T arg);
-size_t hashOf(T)(auto ref T arg, size_t seed);
+/**
+C言語形式の実行時引数をD言語形式に変換する。それ以外の動作は決して行われない。
+例えば、実行環境の初期化や引数の解析などである。
 
-// toDArgs
-// C言語形式のcommand line引数をD言語形式に変換する。
-string[] toDArgs(int argc, char** argv);
+return:
+    動的記憶域上に配置された実行時引数が返される。使用者は明示的に記憶域を開放する必要がある。
+*/
+
+// see also
+version(none)
+import rt.dmain2;
+
+string[] toDArgs(int argc, char** argv)
+{
+    import stdc.stdlib: malloc;
+    import stdc.string: strlen;
+    
+    char[][] args = (cast(char[]*) malloc(argc * (char[]).sizeof))[0 .. argc];
+ 
+    if(argc)
+        assert(args.ptr);
+    scope(exit)
+        free(args.ptr);
+    
+    foreach (size_t i; ref arg; args)
+    {
+        arg = argv[i][0 .. strlen(argv[i])];
+    }
+    return cast(string[]) args;
+}
