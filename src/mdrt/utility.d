@@ -58,7 +58,7 @@ import rt.dmain2;
 
 string[] toDArgs(int argc, char** argv)
 {
-    import stdc.stdlib: malloc;
+    import stdc.stdlib: malloc, free;
     import stdc.string: strlen;
     
     char[][] args = (cast(char[]*) malloc(argc * (char[]).sizeof))[0 .. argc];
