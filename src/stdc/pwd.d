@@ -30,3 +30,42 @@ Source:
 
 module stdc.pwd;
 public import stdc.cheader.pwd;
+
+extern(C):
+nothrow:
+@nogc:
+@live:
+
+
+version(D_Ddoc)
+{
+    ///
+    struct passwd
+    {
+        ///
+        char*   pw_name;
+        ///
+        uid_t   pw_uid;
+        ///
+        gid_t   pw_gid;
+        ///
+        char*   pw_dir;
+        ///
+        char*   pw_shell;
+    }
+}
+///
+passwd* getpwent();
+///
+passwd* getpwnam(const(char*));
+///
+int getpwnam_r(const(char*), passwd*, char*, size_t, passwd**);
+///
+passwd* getpwuid(uid_t);
+///
+int getpwuid_r(uid_t, passwd*, char*, size_t, passwd** );
+///
+void setpwent();
+
+
+

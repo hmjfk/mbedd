@@ -29,3 +29,15 @@ Source:
 */
 module stdc.netinet.tcp;
 public import stdc.cheader.netinet.tcp;
+
+extern(C):
+nothrow:
+@nogc:
+@live:
+
+version(D_Ddoc)
+{
+    private enum unspecified = false;
+    ///
+    enum TCP_NODELAY = unspecified;
+}
