@@ -25,6 +25,11 @@ module stdc.threads;
 public import stdc.cheader.threads;
 import mdrt.coredefs: noreturn;
 
+extern(C):
+nothrow:
+@nogc:
+@live:
+
 static if(!is(typeof(__STDC_NO_THREADS__)))
 {
 version(D_Ddoc)
