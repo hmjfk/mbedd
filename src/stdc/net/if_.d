@@ -24,9 +24,33 @@
 /**
 Copyright:  Copyright Denkousi 2025-
 License:    $(LINK2 http://www.gnu.org/licenses/gpl.html, GPL3.0+) with $(LINK2 https://www.gnu.org/licenses/gcc-exception.html, GCC RLE).
-License:    Original is 
 Authors:    Denkousi
-Source:     
+Source:     stdc/net/if_.d
 */
 module stdc.net.if_;
 public import stdc.cheader.net.if_;
+
+version(D_Ddoc)
+{
+    private enum unspecified = false;
+    
+    ///
+    struct if_nameindex
+    {
+        uint if_index;
+        char* if_name;
+    };
+    ///
+    enum IF_NAMESIZE = unspecified;
+}
+else
+    struct if_nameindex;
+
+///
+void if_freenameindex(if_nameindex* ptr);
+///
+char* if_indextoname(uint ifindex, char* ifname);
+///
+if_nameindex* if_nameindex();
+///
+uint if_nametoindex(const(char*) ifname);
